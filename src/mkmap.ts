@@ -37,6 +37,19 @@ class MKMap<K = any, V = any> {
     private _size = 0;
     private _root = createNewValueHandler<K, V>();
 
+    /**
+     * Creates a new MKMap object.
+     *
+     * Could be called with initial keys-values
+     *
+     * ```
+     * const empty = new MKMap();
+     * const withValues = new MKMap([
+     *     [['key_1', 'key_2'], 'value'],
+     *     [['key'], 'val']
+     * ]);
+     * ```
+     */
     constructor(iterable?: Iterable<readonly [readonly K[], V]>) {
         if (iterable) {
             for (const [keys, value] of iterable) {
@@ -45,15 +58,28 @@ class MKMap<K = any, V = any> {
         }
     }
 
+    /**
+     * Returns the number of keys/value pairs in the MKMap object.
+     */
     get size(): number {
         return this._size;
     }
 
+    /**
+     * Removes all keys-value pairs from the MKMap object.
+     */
     clear(): void {
         this._root = createNewValueHandler();
         this._size = 0;
     }
 
+    /**
+     * Sets the value for the keys in the MKMap object. Returns the MKMap object.
+     *
+     * ```
+     * map.set(['foo'], 'bar');
+     * ```
+     */
     set(keys: readonly K[], val: V): this {
         const handler = getLastValueHandler(this._root, keys, true);
 
@@ -70,18 +96,39 @@ class MKMap<K = any, V = any> {
         return this;
     }
 
+    /**
+     * Returns the value associated to the keys, or undefined if there is none.
+     *
+     * ```
+     * const map = new Map([['foo'], 'bar']);
+     *
+     * map.get(['foo']); // => 'bar'
+     * ```
+     */
     get(keys: readonly K[]): V | undefined {
         const handler = getLastValueHandler(this._root, keys);
 
         return handler?.val;
     }
 
+    /**
+     * Returns a boolean asserting whether a value has been associated to the keys in the MKMap object or not.
+     *
+     * ```
+     * const map = new Map([['foo'], 'bar']);
+     *
+     * map.has(['foo']); // => true
+     * ```
+     */
     has(keys: readonly K[]): boolean {
         const handler = getLastValueHandler(this._root, keys);
 
         return handler ? handler.hasOwnProperty('val') : false;
     }
 
+    /**
+     * Returns true if an element in the KMMap object existed and has been removed, or false if the element does not exist.
+     */
     delete(keys: readonly K[]): boolean {
         const len = keys.length;
 
@@ -116,10 +163,16 @@ class MKMap<K = any, V = any> {
         return f(this._root, 0);
     }
 
+    /**
+     * Returns a new Iterator object that contains an array of [keys, value] for each element in the Map object.
+     */
     entries(): IterableIterator<[K[], V]> {
         return this[Symbol.iterator]();
     }
 
+    /**
+     * Returns a new Iterator object that contains the keys for each element in the MKMap.
+     */
     keys(): IterableIterator<K[]> {
         const self = this;
 
@@ -132,6 +185,9 @@ class MKMap<K = any, V = any> {
         return keys();
     }
 
+    /**
+     * Returns a new Iterator object that contains the values for each element in the MKMap object.
+     */
     values(): IterableIterator<V> {
         const self = this;
 
@@ -144,12 +200,18 @@ class MKMap<K = any, V = any> {
         return values();
     }
 
+    /**
+     * Calls callbackFn once for each keys-value pair present in the MKMap object.
+     */
     forEach(callbackfn: (value: V, keys: K[], map: this) => void): void {
         for (const [keys, value] of this) {
             callbackfn(value, keys, this);
         }
     }
 
+    /**
+     * Returns a new Iterator object that contains an array of [keys, value] for each element in the MKMap object.
+     */
     [Symbol.iterator](): IterableIterator<[K[], V]> {
         const keys: K[] = [];
 
