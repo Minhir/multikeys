@@ -83,8 +83,9 @@ class MKMap<K = any, V = any> {
     set(keys: readonly K[], val: V): this {
         const handler = getLastValueHandler(this._root, keys, true);
 
+        /* istanbul ignore next */
         if (!handler) {
-            throw new Error('Multikeys: can\'t set keys. There is some internal problem.');
+            throw new Error('Multikeys: can\'t set keys. There is some internal problem.'); // Should never be called
         }
 
         if (!handler.hasOwnProperty('val')) {
@@ -134,14 +135,14 @@ class MKMap<K = any, V = any> {
 
         const f = (handler: ValueHandler<K, V>, ind: number): boolean => {
             if (ind === len) {
-                if (handler.hasOwnProperty('val')) {
-                    this._size--;
-                    delete handler['val'];
-
-                    return true;
+                if (!handler.hasOwnProperty('val')) {
+                    return false;
                 }
 
-                return false;
+                this._size--;
+                delete handler['val'];
+
+                return true;
             }
 
             const key = keys[ind];

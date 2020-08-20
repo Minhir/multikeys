@@ -40,7 +40,10 @@
     "typescript": "^3.9.6"
   },
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ]
   },
   "repository": {
     "type": "git",

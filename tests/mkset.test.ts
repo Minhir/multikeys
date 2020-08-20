@@ -118,6 +118,17 @@ describe('MKSet', () => {
         expect(isVisited.every(v => v)).toEqual(true);
     });
 
+    it('returns true/false from delete', () => {
+        const set = new MKSet();
+
+        set.add([1, 2]);
+
+        expect(set.delete([1])).toEqual(false);
+        expect(set.delete([1, 2, 3])).toEqual(false);
+        expect(set.delete([1, 2])).toEqual(true);
+
+    });
+
     it('works with empty key', () => {
         const set = new MKSet();
 
