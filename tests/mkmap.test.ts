@@ -81,6 +81,16 @@ describe('MKMap', () => {
         });
     });
 
+    it('returns true/false from delete', () => {
+        const map = new MKMap();
+
+        map.set([1, 2], 3);
+
+        expect(map.delete([1])).toEqual(false);
+        expect(map.delete([1, 2, 3])).toEqual(false);
+        expect(map.delete([1, 2])).toEqual(true);
+    });
+
     it('deletes all branch chain', () => {
         const map = new MKMap();
 
