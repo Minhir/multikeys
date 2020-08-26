@@ -51,10 +51,12 @@ class MKMap<K = any, V = any> {
      * ```
      */
     constructor(iterable?: Iterable<readonly [readonly K[], V]>) {
-        if (iterable) {
-            for (const [keys, value] of iterable) {
-                this.set(keys, value);
-            }
+        if (!iterable) {
+            return;
+        }
+
+        for (const [keys, value] of iterable) {
+            this.set(keys, value);
         }
     }
 
