@@ -1,35 +1,10 @@
-interface ValueHandler<K, V> {
-    val?: V;
-    next: Map<K, this>;
-}
+import {getLastValueHandler, ValueHandler} from './utils';
+
 
 function createNewValueHandler<K, V>(): ValueHandler<K, V> {
     return {
         next: new Map()
     };
-}
-
-function getLastValueHandler<K, V>(handler: ValueHandler<K, V>, keys: readonly K[], createNewNodes = false): ValueHandler<K, V> | undefined {
-    let curHandler = handler;
-
-    for (const key of keys) {
-        let newHandler = curHandler.next.get(key);
-
-        if (newHandler) {
-            curHandler = newHandler;
-            continue;
-        }
-
-        if (!createNewNodes) {
-            return;
-        }
-
-        newHandler = createNewValueHandler();
-        curHandler.next.set(key, newHandler);
-        curHandler = newHandler;
-    }
-
-    return curHandler;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -83,7 +58,7 @@ class MKMap<K = any, V = any> {
      * ```
      */
     set(keys: readonly K[], val: V): this {
-        const handler = getLastValueHandler(this._root, keys, true);
+        const handler = getLastValueHandler(this._root, keys, createNewValueHandler);
 
         /* istanbul ignore next */
         if (!handler) {
