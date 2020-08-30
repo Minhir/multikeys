@@ -54,9 +54,11 @@ describe('MKWeakMap', () => {
 
         map.set([obj1, obj2], 0);
 
+        expect(map.get([obj1, obj2])).toBe(0);
         expect(map.delete([obj1])).toEqual(false);
         expect(map.delete([obj1, obj2, obj3])).toEqual(false);
         expect(map.delete([obj1, obj2])).toEqual(true);
+        expect(map.get([obj1, obj2])).toBe(undefined);
     });
 
     it('works with empty key', () => {
