@@ -45,6 +45,13 @@ describe('MKWeakMap', () => {
         });
     });
 
+    it('could use non-object keys for get and delete', () => {
+        const map = new MKWeakMap<any, any>(testData);
+
+        expect(map.get([1, ''])).toBe(undefined);
+        expect(map.has([1, ''])).toBe(false);
+    });
+
     it('returns true/false from delete', () => {
         const map = new MKWeakMap();
 
