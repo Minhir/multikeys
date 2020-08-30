@@ -23,6 +23,7 @@
             {
               "allowedNames": ["self"]
             }
-        ]
+        ],
+        "@typescript-eslint/ban-types": 0
     }
 }
