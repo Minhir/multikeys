@@ -11,6 +11,18 @@ function createNewValueHandler<K extends object, V>(): WeakValueHandler<K, V> {
 class MKWeakMap<K extends object = object, V = any> {
     private _root = createNewValueHandler<K, V>();
 
+    /**
+     * Creates a new MKWeakMap object.
+     *
+     * Could be called with initial keys-values
+     *
+     * ```
+     * const empty = new MKWeakMap();
+     * const withValues = new MKWeakMap([
+     *     [[[1, 2], [3, 4]], 'value'],
+     *     [[{foo: 'bar'}], 'val']
+     * ]);
+     */
     constructor(iterable?: Iterable<readonly [readonly K[], V]>) {
         if (!iterable) {
             return;
@@ -21,6 +33,9 @@ class MKWeakMap<K extends object = object, V = any> {
         }
     }
 
+    /**
+     * Removes any value associated to the keys. Returns true if an element in the MKWeakMap object has been removed successfully.
+     */
     delete(keys: readonly K[]): boolean {
         const len = keys.length;
 
@@ -48,19 +63,28 @@ class MKWeakMap<K extends object = object, V = any> {
         return f(this._root, 0);
     }
 
+    /**
+     * Returns the value associated to the keys, or undefined if there is none.
+     */
     get(keys: readonly K[]): V | undefined {
         const handler = getLastValueHandler(this._root, keys);
 
         return handler?.val;
     }
 
+    /**
+     * Returns a Boolean asserting whether a value has been associated to the keys in the MKWeakMap object or not.
+     */
     has(keys: readonly K[]): boolean {
         const handler = getLastValueHandler(this._root, keys);
 
         return handler ? handler.hasOwnProperty('val') : false;
     }
 
-    set(keys: readonly K[], val: V): this {
+    /**
+     * Sets the value for the keys in the MKWeakMap object. Returns the MKWeakMap object.
+     */
+    set(keys: readonly K[], value: V): this {
         const handler = getLastValueHandler(this._root, keys, createNewValueHandler);
 
         /* istanbul ignore next */
@@ -68,7 +92,7 @@ class MKWeakMap<K extends object = object, V = any> {
             throw new Error('Multikeys: can\'t set keys. There is some internal problem.'); // Should never be called
         }
 
-        handler.val = val;
+        handler.val = value;
 
         return this;
     }

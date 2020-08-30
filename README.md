@@ -5,7 +5,7 @@
 [![](https://img.shields.io/coveralls/github/Minhir/multikeys)](https://coveralls.io/github/Minhir/multikeys)
 ![](https://img.shields.io/github/license/minhir/multikeys?color=blue)
 
-Multikeys data structures collection: Map, Set. Based on trie structure.
+Multikeys data structures collection: Map, Set, WeakMap and WeakSet. Based on trie structure.
 
 # API
 ## Classes
@@ -14,6 +14,10 @@ Multikeys data structures collection: Map, Set. Based on trie structure.
 <dt><a href="#MKMap">MKMap</a></dt>
 <dd></dd>
 <dt><a href="#MKSet">MKSet</a></dt>
+<dd></dd>
+<dt><a href="#MKWeakMap">MKWeakMap</a></dt>
+<dd></dd>
+<dt><a href="#MKWeakSet">MKWeakSet</a></dt>
 <dd></dd>
 </dl>
 
@@ -215,3 +219,90 @@ const withKeys = new MKSet([
 <p>Calls callbackFn once for each value present in the MKSet object.</p>
 
 **Kind**: instance method of [<code>MKSet</code>](#MKSet)  
+<a name="MKWeakMap"></a>
+
+## MKWeakMap
+**Kind**: global class  
+
+* [MKWeakMap](#MKWeakMap)
+    * [new MKWeakMap()](#new_MKWeakMap_new)
+    * [.delete()](#MKWeakMap+delete)
+    * [.get()](#MKWeakMap+get)
+    * [.has()](#MKWeakMap+has)
+    * [.set()](#MKWeakMap+set)
+
+<a name="new_MKWeakMap_new"></a>
+
+### new MKWeakMap()
+<p>Creates a new MKWeakMap object.</p>
+<p>Could be called with initial keys-values</p>
+<pre class="prettyprint source"><code>const empty = new MKWeakMap();
+const withValues = new MKWeakMap([
+    [[[1, 2], [3, 4]], 'value'],
+    [[{foo: 'bar'}], 'val']
+]);</code></pre>
+
+<a name="MKWeakMap+delete"></a>
+
+### mkWeakMap.delete()
+<p>Removes any value associated to the keys. Returns true if an element in the MKWeakMap object has been removed successfully.</p>
+
+**Kind**: instance method of [<code>MKWeakMap</code>](#MKWeakMap)  
+<a name="MKWeakMap+get"></a>
+
+### mkWeakMap.get()
+<p>Returns the value associated to the keys, or undefined if there is none.</p>
+
+**Kind**: instance method of [<code>MKWeakMap</code>](#MKWeakMap)  
+<a name="MKWeakMap+has"></a>
+
+### mkWeakMap.has()
+<p>Returns a Boolean asserting whether a value has been associated to the keys in the MKWeakMap object or not.</p>
+
+**Kind**: instance method of [<code>MKWeakMap</code>](#MKWeakMap)  
+<a name="MKWeakMap+set"></a>
+
+### mkWeakMap.set()
+<p>Sets the value for the keys in the MKWeakMap object. Returns the MKWeakMap object.</p>
+
+**Kind**: instance method of [<code>MKWeakMap</code>](#MKWeakMap)  
+<a name="MKWeakSet"></a>
+
+## MKWeakSet
+**Kind**: global class  
+
+* [MKWeakSet](#MKWeakSet)
+    * [new MKWeakSet()](#new_MKWeakSet_new)
+    * [.add()](#MKWeakSet+add)
+    * [.delete()](#MKWeakSet+delete)
+    * [.has()](#MKWeakSet+has)
+
+<a name="new_MKWeakSet_new"></a>
+
+### new MKWeakSet()
+<p>Creates a new MKWeakSet object.</p>
+<p>Could be called with initial keys</p>
+<pre class="prettyprint source"><code>const empty = new MKWeakSet();
+const withValues = new MKWeakSet([
+    [[1, 2], [3, 4]],
+    [{foo: 'bar'}]
+]);</code></pre>
+
+<a name="MKWeakSet+add"></a>
+
+### mkWeakSet.add()
+<p>Add keys to the MKWeakSet object.</p>
+
+**Kind**: instance method of [<code>MKWeakSet</code>](#MKWeakSet)  
+<a name="MKWeakSet+delete"></a>
+
+### mkWeakSet.delete()
+<p>Removes keys from the MKWeakSet. Returns true if keys has been removed successfully.</p>
+
+**Kind**: instance method of [<code>MKWeakSet</code>](#MKWeakSet)  
+<a name="MKWeakSet+has"></a>
+
+### mkWeakSet.has()
+<p>Returns true if an element with the specified keys exists in the MKWeakSet object.</p>
+
+**Kind**: instance method of [<code>MKWeakSet</code>](#MKWeakSet)  

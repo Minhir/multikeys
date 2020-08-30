@@ -57,7 +57,7 @@ class MKMap<K = any, V = any> {
      * map.set(['foo'], 'bar');
      * ```
      */
-    set(keys: readonly K[], val: V): this {
+    set(keys: readonly K[], value: V): this {
         const handler = getLastValueHandler(this._root, keys, createNewValueHandler);
 
         /* istanbul ignore next */
@@ -69,7 +69,7 @@ class MKMap<K = any, V = any> {
             this._size++;
         }
 
-        handler.val = val;
+        handler.val = value;
 
         return this;
     }
