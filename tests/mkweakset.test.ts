@@ -17,6 +17,14 @@ describe('MKWeakSet', () => {
         []
     ];
 
+    it('Can be initialized with data', () => {
+        const set = new MKWeakSet(testData);
+
+        testData.forEach(keys => {
+            expect(set.has(keys)).toEqual(true);
+        });
+    });
+
     it('works with all keys kinds', () => {
         const set = new MKWeakSet();
 
