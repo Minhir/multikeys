@@ -20,10 +20,12 @@ class MKSet<K = any> {
      * ```
      */
     constructor(iterable?: Iterable<readonly K[]>) {
-        if (iterable) {
-            for (const keys of iterable) {
-                this.add(keys);
-            }
+        if (!iterable) {
+            return;
+        }
+
+        for (const keys of iterable) {
+            this.add(keys);
         }
     }
 
