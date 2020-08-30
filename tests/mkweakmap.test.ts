@@ -61,6 +61,12 @@ describe('MKWeakMap', () => {
         expect(map.get([obj1, obj2])).toBe(undefined);
     });
 
+    it('returns undefined on non-existing keys', () => {
+        const map = new MKWeakMap();
+
+        expect(map.get([{}, []])).toBe(undefined);
+    });
+
     it('works with empty key', () => {
         const map = new MKWeakMap();
         const val = {};
