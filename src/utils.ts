@@ -8,7 +8,6 @@ export interface ValueHandler<K, V> {
     next: Map<K, this>;
 }
 
-// TODO: change any
 type Handler<K, V> = ValueHandler<K, V> | WeakValueHandler<any, V>;
 
 export function getLastValueHandler<K, V>(handler: Handler<K, V>, keys: readonly K[], createHandler?: () => Handler<K, V>): Handler<K, V> | undefined {
