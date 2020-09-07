@@ -219,4 +219,11 @@ describe('MKMap', () => {
 
         expect(map.get([2, 3])).toBe(1);
     });
+
+    it('throws error on bad keys', () => {
+        const map = new MKMap();
+
+        expect(() => map.set(1 as any, 2)).toThrow('Keys should be an array');
+        expect(() => new MKMap([['23' as any, 2]])).toThrow('Keys should be an array');
+    });
 })

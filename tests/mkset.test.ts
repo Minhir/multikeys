@@ -148,4 +148,11 @@ describe('MKSet', () => {
 
         expect(set.has([2, 3])).toEqual(true);
     });
+
+    it('throws error on bad keys', () => {
+        const set = new MKSet();
+
+        expect(() => set.add(1 as any)).toThrow('Keys should be an array');
+        expect(() => new MKSet(['23' as any, [2]])).toThrow('Keys should be an array');
+    });
 });
