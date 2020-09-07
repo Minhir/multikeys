@@ -85,6 +85,10 @@ class MKWeakMap<K extends object = object, V = any> {
      * Sets the value for the keys in the MKWeakMap object. Returns the MKWeakMap object.
      */
     set(keys: readonly K[], value: V): this {
+        if (!Array.isArray(keys)) {
+            throw new Error('Keys should be array');
+        }
+
         for (const key of keys) {
             if (key !== Object(key)) {
                 throw new Error('Invalid value used as weak key');

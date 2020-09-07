@@ -58,6 +58,10 @@ class MKMap<K = any, V = any> {
      * ```
      */
     set(keys: readonly K[], value: V): this {
+        if (!Array.isArray(keys)) {
+            throw new Error('Keys should be array');
+        }
+
         const handler = getLastValueHandler(this._root, keys, createNewValueHandler);
 
         /* istanbul ignore next */
