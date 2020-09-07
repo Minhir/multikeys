@@ -76,7 +76,7 @@ describe('MKWeakSet', () => {
         expect(() => new MKWeakSet([[1 as any]])).toThrow('Invalid value used as weak key');
         expect(() => set.add([1 as any])).toThrow('Invalid value used as weak key');
 
-        expect(() => set.add(1 as any)).toThrow('Keys should be array');
-        expect(() => new MKWeakSet(['23' as any, [2]])).toThrow('Keys should be array');
+        expect(() => set.add(1 as any)).toThrow('Keys should be an array');
+        expect(() => new MKWeakSet(['23' as any, [2]])).toThrow('Keys should be an array');
     });
 });

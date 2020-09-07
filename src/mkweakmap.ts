@@ -86,7 +86,7 @@ class MKWeakMap<K extends object = object, V = any> {
      */
     set(keys: readonly K[], value: V): this {
         if (!Array.isArray(keys)) {
-            throw new Error('Keys should be array');
+            throw new Error('Keys should be an array');
         }
 
         for (const key of keys) {
