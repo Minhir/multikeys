@@ -152,11 +152,10 @@ map.has(['foo']); // => true
 <p>Creates a new MKSet object.</p>
 <p>Could be called with initial keys.</p>
 <pre class="prettyprint source"><code>const empty = new MKSet();
-
 const withKeys = new MKSet([
     ['key'],
     ['few', 'keys']
-])
+]);
 </code></pre>
 
 <a name="MKSet+size"></a>
