@@ -69,4 +69,12 @@ describe('MKWeakSet', () => {
 
         expect(set.has([obj1, obj2])).toEqual(true);
     });
+
+    it('throws error on bad key type', () => {
+        const set = new MKWeakSet();
+
+        expect(() => new MKWeakSet([[1 as any]])).toThrow('Invalid value used as weak key');
+        expect(() => set.add([1 as any])).toThrow('Invalid value used as weak key');
+
+    });
 });

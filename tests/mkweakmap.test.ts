@@ -96,4 +96,12 @@ describe('MKWeakMap', () => {
 
         expect(map.get([obj1, obj2])).toBe(1);
     });
+
+    it('throws error on bad key type', () => {
+        const map = new MKWeakMap();
+
+        expect(() => new MKWeakMap([[[1 as any], 2]])).toThrow('Invalid value used as weak key');
+        expect(() => map.set([1 as any], 2)).toThrow('Invalid value used as weak key');
+
+    });
 });
