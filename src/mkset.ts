@@ -12,11 +12,10 @@ class MKSet<K = any> {
      *
      * ```
      * const empty = new MKSet();
-     *
      * const withKeys = new MKSet([
      *     ['key'],
      *     ['few', 'keys']
-     * ])
+     * ]);
      * ```
      */
     constructor(iterable?: Iterable<readonly K[]>) {

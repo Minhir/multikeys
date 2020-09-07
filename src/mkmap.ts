@@ -167,15 +167,28 @@ class MKMap<K = any, V = any> {
      * Returns a new Iterator object that contains the values for each element in the MKMap object.
      */
     values(): IterableIterator<V> {
-        const self = this;
+        const keys: K[] = [];
 
-        function* values() {
-            for (const [, val] of self) {
-                yield val;
+        function* dfs(handler: ValueHandler<K, V>): Generator<V> {
+            if (keys.length === 0 && handler.hasOwnProperty('val')) {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                yield handler.val!;
+            }
+
+            for (const [k, v] of handler.next) {
+                keys.push(k);
+
+                if (v.hasOwnProperty('val')) {
+                    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                    yield v.val!;
+                }
+
+                yield* dfs(v);
+                keys.pop();
             }
         }
 
-        return values();
+        return dfs(this._root);
     }
 
     /**
