@@ -1,6 +1,8 @@
 const Benchmark = require('benchmark');
 const Multikey = require('multikey');
 const {MultikeyMap} = require('multikey-map');
+const MultiKeyMap = require('multikeymap');
+const ManyKeysMap = require('many-keys-map');
 const {MKMap} = require('../lib/index');
 const seedrandom = require('seedrandom');
 
@@ -18,7 +20,7 @@ function getRandomFloat() {
 }
 
 function getRandomString() {
-    return '';
+    return `string-${getRandomFloat()}`;
 }
 
 function getRandomVal() {
@@ -48,8 +50,10 @@ function getRandomVal() {
     }
 }
 
+const MAXIMUM_KEYS_NUMBER = 10;
+
 function generateKeysValue() {
-    let keysNum = getRandomInt(100);
+    let keysNum = getRandomInt(MAXIMUM_KEYS_NUMBER) + 1;
     const value = getRandomVal();
     const keys = [];
 
@@ -84,6 +88,14 @@ function runMapBenchmark() {
         {
             packageName: 'multikey-map',
             map: MultikeyMap
+        },
+        {
+            packageName: 'many-keys-map',
+            map: ManyKeysMap
+        },
+        {
+            packageName: 'multikeymap',
+            map: MultiKeyMap
         },
         {
             packageName: 'multikeys',
