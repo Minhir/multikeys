@@ -36,6 +36,30 @@ Results of calling `set` and `get` with random data (random number of keys and k
 
 </details>
 
+## Example of usage
+
+Using MKMap we could simply add memoization to function with a variable number of arguments:
+
+```javascript
+function memoize(func) {
+    const mkMap = new MKMap();
+
+    return (...args) => {
+        if (mkMap.has(args)) {
+            return mkMap.get(args);
+        }
+
+        const res = func(...args);
+
+        mkMap.set(args, res);
+
+        return res;
+    };
+}
+```
+
+Also, we could replace `MKMap` with `MKWeakMap` and get `memoize` with auto garbage collection. In such case only objects could be `func` arguments.
+
 # API
 ## Classes
 
