@@ -1,9 +1,14 @@
 {
     "private": true,
+    "scripts": {
+        "start": "node ./index.js"
+    },
     "devDependencies": {
         "benchmark": "^2.1.4",
         "seedrandom": "3.0.5",
+        "many-keys-map": "latest",
+        "multikey-map": "latest",
         "multikey": "latest",
-        "multikey-map": "latest"
+        "multikeymap": "latest"
     }
 }
