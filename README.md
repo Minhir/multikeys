@@ -8,7 +8,7 @@
 Multikeys data structures collection: Map, Set, WeakMap and WeakSet. Based on trie structure.
 
 <details>
-    <summary>Benchmarks</summary>
+    <summary>Benchmarks :rocket:</summary>
 
 Benchmarks located in `./benchmark` directory.  You can modify `./benchmark/index.js` and run `npm i && npm start` to test your own use cases.
 
