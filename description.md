@@ -5,7 +5,7 @@
 [![](https://img.shields.io/coveralls/github/Minhir/multikeys)](https://coveralls.io/github/Minhir/multikeys)
 ![](https://img.shields.io/github/license/minhir/multikeys?color=blue)
 
-Multikeys data structures collection: Map, Set, WeakMap and WeakSet. Based on trie structure.
+Multikeys data structures collection written in TypeScript: Map, Set, WeakMap and WeakSet. Based on trie structure.
 
 <details>
     <summary>Benchmarks :rocket:</summary>
@@ -41,6 +41,8 @@ Results of calling `set` and `get` with random data (random number of keys and k
 Using MKMap we could simply add memoization to function with a variable number of arguments:
 
 ```javascript
+const {MKMap} = require("multikeys");
+
 function memoize(func) {
     const mkMap = new MKMap();
 
