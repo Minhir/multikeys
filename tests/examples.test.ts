@@ -1,5 +1,27 @@
-import {MKMap} from '../src';
+import {MKMap, MKSet} from '../src';
 
+
+describe('simple usage', () => {
+    it('should depends on key order', () => {
+        const mkMap = new MKMap();
+
+        mkMap.set([1, 2, 3], 'foo');
+        mkMap.set([3, 2, 1], 'bar');
+
+        expect(mkMap.get([1, 2, 3])).toBe('foo');
+        expect(mkMap.get([3, 2, 1])).toBe('bar');
+
+        mkMap.set([], 'zero');
+        expect(mkMap.get([])).toBe('zero');
+
+        const mkSet = new MKSet();
+        const obj = {};
+
+        mkSet.add([obj, 1]);
+        expect(mkSet.has([{}, 1])).toBe(false);
+        expect(mkSet.has([obj, 1])).toBe(true);
+    });
+});
 
 describe('memoization', () => {
     function memoize(func: (...args: any[]) => any) {

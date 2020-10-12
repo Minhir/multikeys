@@ -38,6 +38,30 @@ Results of calling `set` and `get` with random data (and random number of keys).
 
 ## Example of usage
 
+```javascript
+const mkMap = new MKMap();
+
+mkMap.set([1, 2, 3], 'foo');
+mkMap.set([3, 2, 1], 'bar');
+
+// order of keys matters
+mkMap.get([1, 2, 3]); // => 'foo'
+mkMap.get([3, 2, 1]); // => 'bar'
+
+// an argument with empty keys is also valid
+mkMap.set([], 'zero');
+mkMap.get([]); // => 'zero'
+```
+
+```javascript
+const mkSet = new MKSet();
+const obj = {};
+
+mkSet.add([obj, 1]);
+mkSet.has([{}, 1]); // => false, because {} is a new object, {} !== obj
+mkSet.has([obj, 1]); // => true
+```
+
 Using MKMap we could simply add memoization to function with a variable number of arguments:
 
 ```javascript
