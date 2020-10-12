@@ -5,16 +5,16 @@
 [![](https://img.shields.io/coveralls/github/Minhir/multikeys)](https://coveralls.io/github/Minhir/multikeys)
 ![](https://img.shields.io/github/license/minhir/multikeys?color=blue)
 
-Multikeys data structures collection written in TypeScript: Map, Set, WeakMap and WeakSet. Based on trie structure.
+Multikeys data structures collection written in TypeScript: Map, Set, WeakMap and WeakSet. Based on trie data structure.
 
 <details>
     <summary>Benchmarks :rocket:</summary>
 
-Benchmarks located in `./benchmark` directory.  You can modify `./benchmark/index.js` and run `npm i && npm start` to test your own use cases.
+Benchmarks are located in `./benchmark` directory.  You can modify `./benchmark/index.js` and run `npm i && npm start` to test your own use cases.
 
-Results of calling `set` and `get` with random data (random number of keys and keys values). You can find benchmark code in  `./benchmark/index.js`.
+Results of calling `set` and `get` with random data (and random number of keys). You can find benchmark code in  `./benchmark/index.js`.
 
-## With a maximum number of keys 10
+## Maximum number of keys is 10
 
 | package                                                      | set and get (ops/sec) | normalized on `many-keys-map` |
 |--------------------------------------------------------------|-----------------------|-------------------------------|
@@ -24,7 +24,7 @@ Results of calling `set` and `get` with random data (random number of keys and k
 | [multikey-map](https://www.npmjs.com/package/multikey-map)   | 153 616 ±1.32%        | 5.52                          |
 | **multikeys**                                                | 185 565 ±1.70%        | 6.67                          |
 
-## With a maximum number of keys 100
+## Maximum number of keys is 100
 
 | package                                                      | set and get (ops/sec) | normalized on `many-keys-map` |
 |--------------------------------------------------------------|-----------------------|-------------------------------|
@@ -294,7 +294,8 @@ const withKeys = new MKSet([
 const withValues = new MKWeakMap([
     [[[1, 2], [3, 4]], 'value'],
     [[{foo: 'bar'}], 'val']
-]);</code></pre>
+]);
+</code></pre>
 
 <a name="MKWeakMap+delete"></a>
 
@@ -340,7 +341,8 @@ const withValues = new MKWeakMap([
 const withValues = new MKWeakSet([
     [[1, 2], [3, 4]],
     [{foo: 'bar'}]
-]);</code></pre>
+]);
+</code></pre>
 
 <a name="MKWeakSet+add"></a>
 

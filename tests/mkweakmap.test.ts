@@ -100,8 +100,8 @@ describe('MKWeakMap', () => {
     it('throws error on bad key type', () => {
         const map = new MKWeakMap();
 
-        expect(() => new MKWeakMap([[[1 as any], 2]])).toThrow('Invalid value used as weak key');
-        expect(() => map.set([1 as any], 2)).toThrow('Invalid value used as weak key');
+        expect(() => new MKWeakMap([[[1 as any], 2]])).toThrow('Invalid value is used as weak key');
+        expect(() => map.set([1 as any], 2)).toThrow('Invalid value is used as weak key');
 
         expect(() => map.set({} as any, 2)).toThrow('Keys should be an array');
         expect(() => new MKWeakMap([['23' as any, 2]])).toThrow('Keys should be an array');

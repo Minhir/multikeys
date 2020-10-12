@@ -15,7 +15,8 @@ class MKWeakSet<K extends object> {
      *     [[1, 2], [3, 4]],
      *     [{foo: 'bar'}]
      * ]);
-     * **/
+     * ```
+     */
     constructor(iterable?: Iterable<readonly K[]>) {
         if (!iterable) {
             return;
