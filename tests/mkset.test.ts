@@ -11,6 +11,7 @@ describe('MKSet', () => {
         [undefined, null],
         [null, 2],
         [{}, {}],
+        [1, () => {}],
         [[], []],
         [Symbol(), [], {}, ''],
         [1],

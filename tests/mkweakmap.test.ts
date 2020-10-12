@@ -12,6 +12,7 @@ describe('MKWeakMap', () => {
         [[{}], {}],
         [[[]], []],
         [[obj1, [], obj3, new Map(), obj1], {}],
+        [[() => {}, []], 2],
         [[], 'empty key'],
         [[obj1, obj2, obj3], '123'],
         [[obj1, obj2, obj3, obj4], '1234'],

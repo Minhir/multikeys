@@ -10,6 +10,7 @@ describe('MKMap', () => {
         [[true], false],
         [[undefined], null],
         [[null], 2],
+        [[() => {}], 14],
         [[{}], {}],
         [[[]], []],
         [[Symbol()], Symbol],
