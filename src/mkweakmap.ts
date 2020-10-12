@@ -22,6 +22,7 @@ class MKWeakMap<K extends object = object, V = any> {
      *     [[[1, 2], [3, 4]], 'value'],
      *     [[{foo: 'bar'}], 'val']
      * ]);
+     * ```
      */
     constructor(iterable?: Iterable<readonly [readonly K[], V]>) {
         if (!iterable) {
@@ -91,7 +92,7 @@ class MKWeakMap<K extends object = object, V = any> {
 
         for (const key of keys) {
             if (key !== Object(key)) {
-                throw new Error('Invalid value used as weak key');
+                throw new Error('Invalid value is used as weak key');
             }
         }
 

@@ -73,8 +73,8 @@ describe('MKWeakSet', () => {
     it('throws error on bad key type', () => {
         const set = new MKWeakSet();
 
-        expect(() => new MKWeakSet([[1 as any]])).toThrow('Invalid value used as weak key');
-        expect(() => set.add([1 as any])).toThrow('Invalid value used as weak key');
+        expect(() => new MKWeakSet([[1 as any]])).toThrow('Invalid value is used as weak key');
+        expect(() => set.add([1 as any])).toThrow('Invalid value is used as weak key');
 
         expect(() => set.add(1 as any)).toThrow('Keys should be an array');
         expect(() => new MKWeakSet(['23' as any, [2]])).toThrow('Keys should be an array');
