@@ -56,7 +56,7 @@ class MKMap<K = any, V = any> {
      * Sets the value for the keys in the MKMap object. Returns the MKMap object.
      *
      * ```
-     * map.set(['foo'], 'bar');
+     * mkMap.set(['foo'], 'bar');
      * ```
      *
      * @param keys - Array of keys
@@ -88,9 +88,9 @@ class MKMap<K = any, V = any> {
      * Returns the value associated to the keys, or undefined if there is none.
      *
      * ```
-     * const map = new Map([['foo'], 'bar']);
+     * const mkMap = new MKMap([['foo'], 'bar']);
      *
-     * map.get(['foo']); // => 'bar'
+     * mkMap.get(['foo']); // => 'bar'
      * ```
      *
      * @param keys - Array of keys
@@ -106,9 +106,9 @@ class MKMap<K = any, V = any> {
      * Returns a boolean asserting whether a value has been associated to the keys in the MKMap object or not.
      *
      * ```
-     * const map = new Map([['foo'], 'bar']);
+     * const mkMap = new MKMap([['foo'], 'bar']);
      *
-     * map.has(['foo']); // => true
+     * mkMap.has(['foo']); // => true
      * ```
      *
      * @param keys - Array of keys
@@ -122,6 +122,13 @@ class MKMap<K = any, V = any> {
 
     /**
      * Returns true if an element in the MKMap object existed and has been removed, or false if the element does not exist.
+     *
+     * ```
+     * const mkMap = new MKMap([['foo'], 'bar']);
+     *
+     * mkMap.delete(['foo']); // => true
+     * mkMap.delete(['foo']); // => false
+     * ```
      *
      * @param keys - Array of keys
      * @returns True if an element was in the MKMap

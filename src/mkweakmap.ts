@@ -19,7 +19,6 @@ class MKWeakMap<K extends object = object, V = any> {
      * ```
      * const empty = new MKWeakMap();
      * const withValues = new MKWeakMap([
-     *     [[[1, 2], [3, 4]], 'value'],
      *     [[{foo: 'bar'}], 'val']
      * ]);
      * ```
@@ -38,6 +37,14 @@ class MKWeakMap<K extends object = object, V = any> {
 
     /**
      * Removes any value associated to the keys. Returns true if an element in the MKWeakMap object has been removed successfully.
+     *
+     * ```
+     * const obj = {};
+     * const mkWeakMap = new MKWeakMap([[obj, 'foo']]);
+     *
+     * mkWeakMap.delete([obj]); // => true
+     * mkWeakMap.delete([obj]); // => false
+     * ```
      *
      * @param keys - Array of keys
      * @returns True if an element was in the MKMap
@@ -72,6 +79,13 @@ class MKWeakMap<K extends object = object, V = any> {
     /**
      * Returns the value associated to the keys, or undefined if there is none.
      *
+     * ```
+     * const obj = {};
+     * const mkWeakMap = new MKWeakMap([[obj, 'foo']]);
+     *
+     * mkWeakMap.get([obj]); // => 'foo'
+     * ```
+     *
      * @param keys - Array of keys
      * @returns Value or undefined
      */
@@ -84,6 +98,13 @@ class MKWeakMap<K extends object = object, V = any> {
     /**
      * Returns a Boolean asserting whether a value has been associated to the keys in the MKWeakMap object or not.
      *
+     * ```
+     * const obj = {};
+     * const mkWeakMap = new MKWeakMap([[obj, 'foo']]);
+     *
+     * mkWeakMap.has([obj]); // => 'true'
+     * ```
+     *
      * @param keys - Array of keys
      * @returns True if MKMap contains keys
      */
@@ -95,6 +116,14 @@ class MKWeakMap<K extends object = object, V = any> {
 
     /**
      * Sets the value for the keys in the MKWeakMap object. Returns the MKWeakMap object.
+     *
+     * ```
+     * const mkWeakMap = new MKWeakMap();
+     * const obj = {};
+     *
+     * mkWeakMap.set([obj], 'foo');
+     * mkWeakMap.get([obj]); // => 'foo'
+     * ```
      *
      * @param keys - Array of keys
      * @param value - Value associated with keys

@@ -150,7 +150,7 @@ const withValues = new MKMap([
 
 ### mkMap.set(keys, value) ⇒
 <p>Sets the value for the keys in the MKMap object. Returns the MKMap object.</p>
-<pre class="prettyprint source"><code>map.set(['foo'], 'bar');
+<pre class="prettyprint source"><code>mkMap.set(['foo'], 'bar');
 </code></pre>
 
 **Kind**: instance method of [<code>MKMap</code>](#MKMap)  
@@ -165,9 +165,9 @@ const withValues = new MKMap([
 
 ### mkMap.get(keys) ⇒
 <p>Returns the value associated to the keys, or undefined if there is none.</p>
-<pre class="prettyprint source"><code>const map = new Map([['foo'], 'bar']);
+<pre class="prettyprint source"><code>const mkMap = new MKMap([['foo'], 'bar']);
 
-map.get(['foo']); // => 'bar'
+mkMap.get(['foo']); // => 'bar'
 </code></pre>
 
 **Kind**: instance method of [<code>MKMap</code>](#MKMap)  
@@ -181,9 +181,9 @@ map.get(['foo']); // => 'bar'
 
 ### mkMap.has(keys) ⇒
 <p>Returns a boolean asserting whether a value has been associated to the keys in the MKMap object or not.</p>
-<pre class="prettyprint source"><code>const map = new Map([['foo'], 'bar']);
+<pre class="prettyprint source"><code>const mkMap = new MKMap([['foo'], 'bar']);
 
-map.has(['foo']); // => true
+mkMap.has(['foo']); // => true
 </code></pre>
 
 **Kind**: instance method of [<code>MKMap</code>](#MKMap)  
@@ -197,6 +197,11 @@ map.has(['foo']); // => true
 
 ### mkMap.delete(keys) ⇒
 <p>Returns true if an element in the MKMap object existed and has been removed, or false if the element does not exist.</p>
+<pre class="prettyprint source"><code>const map = new Map([['foo'], 'bar']);
+
+map.delete(['foo']); // => true
+map.delete(['foo']); // => false
+</code></pre>
 
 **Kind**: instance method of [<code>MKMap</code>](#MKMap)  
 **Returns**: <p>True if an element was in the MKMap</p>  
@@ -282,6 +287,8 @@ const withKeys = new MKSet([
 
 ### mkSet.add(keys)
 <p>Appends keys to the MKSet object.</p>
+<pre class="prettyprint source"><code>mkSet.add([1, 2, 3]);
+</code></pre>
 
 **Kind**: instance method of [<code>MKSet</code>](#MKSet)  
 
@@ -299,6 +306,11 @@ const withKeys = new MKSet([
 
 ### mkSet.delete(keys) ⇒
 <p>Removes the element associated to the keys and returns the value that MKSet.has(keys) would have previously returned. MKSet.has(keys) will return false afterwards.</p>
+<pre class="prettyprint source"><code>const mkSet = new MKSet([['foo']]);
+
+mkSet.delete(['foo']); // => true
+mkSet.delete(['foo']); // => false
+</code></pre>
 
 **Kind**: instance method of [<code>MKSet</code>](#MKSet)  
 **Returns**: <p>True if an element was in the MKMap</p>  
@@ -311,6 +323,11 @@ const withKeys = new MKSet([
 
 ### mkSet.has(keys) ⇒
 <p>Returns a boolean asserting whether an element is present with the given keys in the MKSet object or not.</p>
+<pre class="prettyprint source"><code>const mkSet = new MKSet([['foo']]);
+
+mkSet.has(['foo']); // => true
+mkSet.has(['bar']); // => false
+</code></pre>
 
 **Kind**: instance method of [<code>MKSet</code>](#MKSet)  
 **Returns**: <p>True if MKMap contains keys</p>  
@@ -370,7 +387,6 @@ const withKeys = new MKSet([
 <p>Could be called with initial keys-values</p>
 <pre class="prettyprint source"><code>const empty = new MKWeakMap();
 const withValues = new MKWeakMap([
-    [[[1, 2], [3, 4]], 'value'],
     [[{foo: 'bar'}], 'val']
 ]);
 </code></pre>
@@ -384,6 +400,12 @@ const withValues = new MKWeakMap([
 
 ### mkWeakMap.delete(keys) ⇒
 <p>Removes any value associated to the keys. Returns true if an element in the MKWeakMap object has been removed successfully.</p>
+<pre class="prettyprint source"><code>const obj = {};
+const mkWeakMap = MKWeakMap([[obj, 'foo']]);
+
+mkWeakMap.delete([obj]); // => true
+mkWeakMap.delete([obj]); // => false
+</code></pre>
 
 **Kind**: instance method of [<code>MKWeakMap</code>](#MKWeakMap)  
 **Returns**: <p>True if an element was in the MKMap</p>  
@@ -396,6 +418,11 @@ const withValues = new MKWeakMap([
 
 ### mkWeakMap.get(keys) ⇒
 <p>Returns the value associated to the keys, or undefined if there is none.</p>
+<pre class="prettyprint source"><code>const obj = {};
+const mkWeakMap = MKWeakMap([[obj, 'foo']]);
+
+mkWeakMap.get([obj]); // => 'foo'
+</code></pre>
 
 **Kind**: instance method of [<code>MKWeakMap</code>](#MKWeakMap)  
 **Returns**: <p>Value or undefined</p>  
@@ -408,6 +435,11 @@ const withValues = new MKWeakMap([
 
 ### mkWeakMap.has(keys) ⇒
 <p>Returns a Boolean asserting whether a value has been associated to the keys in the MKWeakMap object or not.</p>
+<pre class="prettyprint source"><code>const obj = {};
+const mkWeakMap = MKWeakMap([[obj, 'foo']]);
+
+mkWeakMap.has([obj]); // => 'true'
+</code></pre>
 
 **Kind**: instance method of [<code>MKWeakMap</code>](#MKWeakMap)  
 **Returns**: <p>True if MKMap contains keys</p>  
@@ -420,6 +452,12 @@ const withValues = new MKWeakMap([
 
 ### mkWeakMap.set(keys, value) ⇒
 <p>Sets the value for the keys in the MKWeakMap object. Returns the MKWeakMap object.</p>
+<pre class="prettyprint source"><code>const mkWeakMap = MKWeakMap();
+const obj = {};
+
+mkWeakMap.set([obj], 'foo');
+mkWeakMap.get([obj]); // => 'foo'
+</code></pre>
 
 **Kind**: instance method of [<code>MKWeakMap</code>](#MKWeakMap)  
 **Returns**: <p>MKWeakMap</p>  
@@ -447,7 +485,6 @@ const withValues = new MKWeakMap([
 <p>Could be called with initial keys</p>
 <pre class="prettyprint source"><code>const empty = new MKWeakSet();
 const withValues = new MKWeakSet([
-    [[1, 2], [3, 4]],
     [{foo: 'bar'}]
 ]);
 </code></pre>
@@ -461,6 +498,12 @@ const withValues = new MKWeakSet([
 
 ### mkWeakSet.add(keys)
 <p>Add keys to the MKWeakSet object.</p>
+<pre class="prettyprint source"><code>const mkWeakSet = MKWeakSet();
+const obj = {};
+
+mkWeakSet.add([obj]);
+mkWeakSet.has([obj]); // => 'true'
+</code></pre>
 
 **Kind**: instance method of [<code>MKWeakSet</code>](#MKWeakSet)  
 
@@ -472,6 +515,12 @@ const withValues = new MKWeakSet([
 
 ### mkWeakSet.delete(keys) ⇒
 <p>Removes keys from the MKWeakSet. Returns true if keys has been removed successfully.</p>
+<pre class="prettyprint source"><code>const obj = {};
+const mkWeakSet = MKWeakSet([[obj]]);
+
+mkWeakSet.delete([obj]); // => true
+mkWeakSet.delete([obj]); // => false
+</code></pre>
 
 **Kind**: instance method of [<code>MKWeakSet</code>](#MKWeakSet)  
 **Returns**: <p>True if an element was in the MKMap</p>  
@@ -484,6 +533,11 @@ const withValues = new MKWeakSet([
 
 ### mkWeakSet.has(keys) ⇒
 <p>Returns true if an element with the specified keys exists in the MKWeakSet object.</p>
+<pre class="prettyprint source"><code>const obj = {};
+const mkWeakSet = MKWeakSet([[obj]]);
+
+mkWeakSet.has([obj]); // => 'true'
+</code></pre>
 
 **Kind**: instance method of [<code>MKWeakSet</code>](#MKWeakSet)  
 **Returns**: <p>True if MKMap contains keys</p>  
