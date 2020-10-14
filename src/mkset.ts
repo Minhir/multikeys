@@ -17,6 +17,8 @@ class MKSet<K = any> {
      *     ['few', 'keys']
      * ]);
      * ```
+     *
+     * @param iterable - Optional array of initial keys
      */
     constructor(iterable?: Iterable<readonly K[]>) {
         if (!iterable) {
@@ -30,6 +32,8 @@ class MKSet<K = any> {
 
     /**
      * Returns the number of values in the MKSet object.
+     *
+     * @returns Size of the MKMap object
      */
     get size(): number {
         return this._map.size;
@@ -37,6 +41,8 @@ class MKSet<K = any> {
 
     /**
      * Appends keys to the MKSet object.
+     *
+     * @param keys - Array of keys
      */
     add(keys: readonly K[]): void {
         this._map.set(keys, true);
@@ -51,6 +57,9 @@ class MKSet<K = any> {
 
     /**
      * Removes the element associated to the keys and returns the value that MKSet.has(keys) would have previously returned. MKSet.has(keys) will return false afterwards.
+     *
+     * @param keys - Array of keys
+     * @returns True if an element was in the MKMap
      */
     delete(keys: readonly K[]): boolean {
         return this._map.delete(keys);
@@ -58,6 +67,9 @@ class MKSet<K = any> {
 
     /**
      * Returns a boolean asserting whether an element is present with the given keys in the MKSet object or not.
+     *
+     * @param keys - Array of keys
+     * @returns True if MKMap contains keys
      */
     has(keys: readonly K[]): boolean {
         return this._map.has(keys);
@@ -65,6 +77,8 @@ class MKSet<K = any> {
 
     /**
      * Returns a new Iterator object that yields the keys for each element in the MKSet object.
+     *
+     * @returns Iterator over keys
      */
     [Symbol.iterator](): IterableIterator<K[]> {
         const map = this._map;
@@ -80,6 +94,8 @@ class MKSet<K = any> {
 
     /**
      * Returns a new Iterator object that contains an array of [keys, keys] for each element in the MKSet object.
+     *
+     * @returns Iterator of [keys, keys]
      */
     entries(): IterableIterator<[K[], K[]]> {
         const map = this._map;
@@ -95,6 +111,8 @@ class MKSet<K = any> {
 
     /**
      * Returns a new Iterator object that yields the keys for each element in the MKSet object. (this is the same as the keys() method.)
+     *
+     * @returns Iterator over keys
      */
     values(): IterableIterator<K[]> {
         return this._map.keys();
@@ -102,6 +120,8 @@ class MKSet<K = any> {
 
     /**
      * Returns a new Iterator object that yields the keys for each element in the MKSet object. (this is the same as the values() method.)
+     *
+     * @returns Iterator over keys
      */
     keys(): IterableIterator<K[]> {
         return this.values();
@@ -109,6 +129,8 @@ class MKSet<K = any> {
 
     /**
      * Calls callbackFn once for each value present in the MKSet object.
+     *
+     * @param callbackfn - Callback function
      */
     forEach(callbackfn: (value: K[], key: K[], map: this) => void): void {
         for (const keys of this) {
