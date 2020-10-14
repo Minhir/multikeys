@@ -6,7 +6,8 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:jsdoc/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -14,7 +15,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "jsdoc"
     ],
     "rules": {
         "no-prototype-builtins": 0,
@@ -24,6 +26,11 @@
               "allowedNames": ["self"]
             }
         ],
-        "@typescript-eslint/ban-types": 0
+        "@typescript-eslint/ban-types": 0,
+        "jsdoc/check-types": 0,
+        "jsdoc/no-types": 0,
+        "jsdoc/require-jsdoc": [1, {"publicOnly": {"ancestorsOnly": true}}],
+        "jsdoc/require-param-type": 0,
+        "jsdoc/require-returns-type": 0
     }
 }

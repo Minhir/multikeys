@@ -16,6 +16,8 @@ class MKWeakSet<K extends object> {
      *     [{foo: 'bar'}]
      * ]);
      * ```
+     *
+     * @param iterable - Optional array of initial keys
      */
     constructor(iterable?: Iterable<readonly K[]>) {
         if (!iterable) {
@@ -29,6 +31,8 @@ class MKWeakSet<K extends object> {
 
     /**
      * Add keys to the MKWeakSet object.
+     *
+     * @param keys - Array of keys
      */
     add(keys: readonly K[]): void {
         this._map.set(keys, true);
@@ -36,6 +40,9 @@ class MKWeakSet<K extends object> {
 
     /**
      * Removes keys from the MKWeakSet. Returns true if keys has been removed successfully.
+     *
+     * @param keys - Array of keys
+     * @returns True if an element was in the MKMap
      */
     delete(keys: readonly K[]): boolean {
         return this._map.delete(keys);
@@ -43,6 +50,9 @@ class MKWeakSet<K extends object> {
 
     /**
      * Returns true if an element with the specified keys exists in the MKWeakSet object.
+     *
+     * @param keys - Array of keys
+     * @returns True if MKMap contains keys
      */
     has(keys: readonly K[]): boolean {
         return this._map.has(keys);
