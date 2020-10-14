@@ -42,6 +42,10 @@ class MKSet<K = any> {
     /**
      * Appends keys to the MKSet object.
      *
+     * ```
+     * mkSet.add([1, 2, 3]);
+     * ```
+     *
      * @param keys - Array of keys
      */
     add(keys: readonly K[]): void {
@@ -58,6 +62,13 @@ class MKSet<K = any> {
     /**
      * Removes the element associated to the keys and returns the value that MKSet.has(keys) would have previously returned. MKSet.has(keys) will return false afterwards.
      *
+     * ```
+     * const mkSet = new MKSet([['foo']]);
+     *
+     * mkSet.delete(['foo']); // => true
+     * mkSet.delete(['foo']); // => false
+     * ```
+     *
      * @param keys - Array of keys
      * @returns True if an element was in the MKMap
      */
@@ -67,6 +78,13 @@ class MKSet<K = any> {
 
     /**
      * Returns a boolean asserting whether an element is present with the given keys in the MKSet object or not.
+     *
+     * ```
+     * const mkSet = new MKSet([['foo']]);
+     *
+     * mkSet.has(['foo']); // => true
+     * mkSet.has(['bar']); // => false
+     * ```
      *
      * @param keys - Array of keys
      * @returns True if MKMap contains keys

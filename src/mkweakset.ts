@@ -12,7 +12,6 @@ class MKWeakSet<K extends object> {
      * ```
      * const empty = new MKWeakSet();
      * const withValues = new MKWeakSet([
-     *     [[1, 2], [3, 4]],
      *     [{foo: 'bar'}]
      * ]);
      * ```
@@ -32,6 +31,14 @@ class MKWeakSet<K extends object> {
     /**
      * Add keys to the MKWeakSet object.
      *
+     * ```
+     * const mkWeakSet = new MKWeakSet();
+     * const obj = {};
+     *
+     * mkWeakSet.add([obj]);
+     * mkWeakSet.has([obj]); // => 'true'
+     * ```
+     *
      * @param keys - Array of keys
      */
     add(keys: readonly K[]): void {
@@ -40,6 +47,14 @@ class MKWeakSet<K extends object> {
 
     /**
      * Removes keys from the MKWeakSet. Returns true if keys has been removed successfully.
+     *
+     * ```
+     * const obj = {};
+     * const mkWeakSet = new MKWeakSet([[obj]]);
+     *
+     * mkWeakSet.delete([obj]); // => true
+     * mkWeakSet.delete([obj]); // => false
+     * ```
      *
      * @param keys - Array of keys
      * @returns True if an element was in the MKMap
@@ -50,6 +65,13 @@ class MKWeakSet<K extends object> {
 
     /**
      * Returns true if an element with the specified keys exists in the MKWeakSet object.
+     *
+     * ```
+     * const obj = {};
+     * const mkWeakSet = new MKWeakSet([[obj]]);
+     *
+     * mkWeakSet.has([obj]); // => 'true'
+     * ```
      *
      * @param keys - Array of keys
      * @returns True if MKMap contains keys
