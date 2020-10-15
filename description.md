@@ -85,5 +85,3 @@ function memoize(func) {
 ```
 
 Also, we could replace `MKMap` with `MKWeakMap` and get `memoize` with auto garbage collection. In such case only objects could be `func` arguments.
-
-# API
