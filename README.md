@@ -144,8 +144,6 @@ Name | Default |
 
 \+ **new MKMap**(`iterable?`: Iterable\<readonly [readonly K[], V]>): [MKMap](#classesmkmapmd)
 
-*Defined in [mkmap.ts:14](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L14)*
-
 Creates a new MKMap object.
 
 Could be called with initial keys-values.
@@ -172,8 +170,6 @@ Name | Type | Description |
 
 • get **size**(): number
 
-*Defined in [mkmap.ts:44](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L44)*
-
 **Returns:** number
 
 Size of the MKMap object
@@ -183,8 +179,6 @@ Size of the MKMap object
 ### [Symbol.iterator]
 
 ▸ **[Symbol.iterator]**(): IterableIterator\<[K[], V]>
-
-*Defined in [mkmap.ts:243](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L243)*
 
 Returns a new Iterator object that contains an array of [keys, value] for each element in the MKMap object.
 
@@ -198,8 +192,6 @@ ___
 
 ▸ **clear**(): void
 
-*Defined in [mkmap.ts:51](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L51)*
-
 Removes all keys-value pairs from the MKMap object.
 
 **Returns:** void
@@ -209,8 +201,6 @@ ___
 ### delete
 
 ▸ **delete**(`keys`: readonly K[]): boolean
-
-*Defined in [mkmap.ts:137](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L137)*
 
 Returns true if an element in the MKMap object existed and has been removed, or false if the element does not exist.
 
@@ -237,8 +227,6 @@ ___
 
 ▸ **entries**(): IterableIterator\<[K[], V]>
 
-*Defined in [mkmap.ts:176](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L176)*
-
 Returns a new Iterator object that contains an array of [keys, value] for each element in the Map object.
 
 **Returns:** IterableIterator\<[K[], V]>
@@ -250,8 +238,6 @@ ___
 ### forEach
 
 ▸ **forEach**(`callbackfn`: (value: V,keys: K[],map: this) => void): void
-
-*Defined in [mkmap.ts:232](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L232)*
 
 Calls callbackFn once for each keys-value pair present in the MKMap object.
 
@@ -268,8 +254,6 @@ ___
 ### get
 
 ▸ **get**(`keys`: readonly K[]): V \| undefined
-
-*Defined in [mkmap.ts:100](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L100)*
 
 Returns the value associated to the keys, or undefined if there is none.
 
@@ -295,8 +279,6 @@ ___
 
 ▸ **has**(`keys`: readonly K[]): boolean
 
-*Defined in [mkmap.ts:118](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L118)*
-
 Returns a boolean asserting whether a value has been associated to the keys in the MKMap object or not.
 
 ```
@@ -321,8 +303,6 @@ ___
 
 ▸ **keys**(): IterableIterator\<K[]>
 
-*Defined in [mkmap.ts:185](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L185)*
-
 Returns a new Iterator object that contains the keys for each element in the MKMap.
 
 **Returns:** IterableIterator\<K[]>
@@ -334,8 +314,6 @@ ___
 ### set
 
 ▸ **set**(`keys`: readonly K[], `value`: V): this
-
-*Defined in [mkmap.ts:67](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L67)*
 
 Sets the value for the keys in the MKMap object. Returns the MKMap object.
 
@@ -359,8 +337,6 @@ ___
 ### values
 
 ▸ **values**(): IterableIterator\<V>
-
-*Defined in [mkmap.ts:202](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L202)*
 
 Returns a new Iterator object that contains the values for each element in the MKMap object.
 
@@ -411,8 +387,6 @@ Name | Default |
 
 \+ **new MKSet**(`iterable?`: Iterable\<readonly K[]>): [MKSet](#classesmksetmd)
 
-*Defined in [mkset.ts:6](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L6)*
-
 Creates a new MKSet object.
 
 Could be called with initial keys.
@@ -439,8 +413,6 @@ Name | Type | Description |
 
 • get **size**(): number
 
-*Defined in [mkset.ts:38](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L38)*
-
 Returns the number of values in the MKSet object.
 
 **Returns:** number
@@ -453,8 +425,6 @@ Size of the MKMap object
 
 ▸ **[Symbol.iterator]**(): IterableIterator\<K[]>
 
-*Defined in [mkset.ts:101](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L101)*
-
 Returns a new Iterator object that yields the keys for each element in the MKSet object.
 
 **Returns:** IterableIterator\<K[]>
@@ -466,8 +436,6 @@ ___
 ### add
 
 ▸ **add**(`keys`: readonly K[]): void
-
-*Defined in [mkset.ts:51](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L51)*
 
 Appends keys to the MKSet object.
 
@@ -489,8 +457,6 @@ ___
 
 ▸ **clear**(): void
 
-*Defined in [mkset.ts:58](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L58)*
-
 Removes all elements from the MKSet object.
 
 **Returns:** void
@@ -500,8 +466,6 @@ ___
 ### delete
 
 ▸ **delete**(`keys`: readonly K[]): boolean
-
-*Defined in [mkset.ts:75](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L75)*
 
 Removes the element associated to the keys and returns the value that MKSet.has(keys) would have previously returned. MKSet.has(keys) will return false afterwards.
 
@@ -528,8 +492,6 @@ ___
 
 ▸ **entries**(): IterableIterator\<[K[], K[]]>
 
-*Defined in [mkset.ts:118](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L118)*
-
 Returns a new Iterator object that contains an array of [keys, keys] for each element in the MKSet object.
 
 **Returns:** IterableIterator\<[K[], K[]]>
@@ -541,8 +503,6 @@ ___
 ### forEach
 
 ▸ **forEach**(`callbackfn`: (value: K[],key: K[],map: this) => void): void
-
-*Defined in [mkset.ts:153](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L153)*
 
 Calls callbackFn once for each value present in the MKSet object.
 
@@ -559,8 +519,6 @@ ___
 ### has
 
 ▸ **has**(`keys`: readonly K[]): boolean
-
-*Defined in [mkset.ts:92](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L92)*
 
 Returns a boolean asserting whether an element is present with the given keys in the MKSet object or not.
 
@@ -587,8 +545,6 @@ ___
 
 ▸ **keys**(): IterableIterator\<K[]>
 
-*Defined in [mkset.ts:144](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L144)*
-
 Returns a new Iterator object that yields the keys for each element in the MKSet object. (this is the same as the values() method.)
 
 **Returns:** IterableIterator\<K[]>
@@ -600,8 +556,6 @@ ___
 ### values
 
 ▸ **values**(): IterableIterator\<K[]>
-
-*Defined in [mkset.ts:135](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L135)*
 
 Returns a new Iterator object that yields the keys for each element in the MKSet object. (this is the same as the keys() method.)
 
@@ -644,8 +598,6 @@ Name | Type | Default |
 
 \+ **new MKWeakMap**(`iterable?`: Iterable\<readonly [readonly K[], V]>): [MKWeakMap](#classesmkweakmapmd)
 
-*Defined in [mkweakmap.ts:12](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakmap.ts#L12)*
-
 Creates a new MKWeakMap object.
 
 Could be called with initial keys-values
@@ -670,8 +622,6 @@ Name | Type | Description |
 ### delete
 
 ▸ **delete**(`keys`: readonly K[]): boolean
-
-*Defined in [mkweakmap.ts:52](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakmap.ts#L52)*
 
 Removes any value associated to the keys. Returns true if an element in the MKWeakMap object has been removed successfully.
 
@@ -699,8 +649,6 @@ ___
 
 ▸ **get**(`keys`: readonly K[]): V \| undefined
 
-*Defined in [mkweakmap.ts:92](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakmap.ts#L92)*
-
 Returns the value associated to the keys, or undefined if there is none.
 
 ```
@@ -726,8 +674,6 @@ ___
 
 ▸ **has**(`keys`: readonly K[]): boolean
 
-*Defined in [mkweakmap.ts:111](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakmap.ts#L111)*
-
 Returns a Boolean asserting whether a value has been associated to the keys in the MKWeakMap object or not.
 
 ```
@@ -752,8 +698,6 @@ ___
 ### set
 
 ▸ **set**(`keys`: readonly K[], `value`: V): this
-
-*Defined in [mkweakmap.ts:132](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakmap.ts#L132)*
 
 Sets the value for the keys in the MKWeakMap object. Returns the MKWeakMap object.
 
@@ -809,8 +753,6 @@ Name | Type |
 
 \+ **new MKWeakSet**(`iterable?`: Iterable\<readonly K[]>): [MKWeakSet](#classesmkweaksetmd)
 
-*Defined in [mkweakset.ts:5](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakset.ts#L5)*
-
 Creates a new MKWeakSet object.
 
 Could be called with initial keys
@@ -836,8 +778,6 @@ Name | Type | Description |
 
 ▸ **add**(`keys`: readonly K[]): void
 
-*Defined in [mkweakset.ts:44](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakset.ts#L44)*
-
 Add keys to the MKWeakSet object.
 
 ```
@@ -861,8 +801,6 @@ ___
 ### delete
 
 ▸ **delete**(`keys`: readonly K[]): boolean
-
-*Defined in [mkweakset.ts:62](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakset.ts#L62)*
 
 Removes keys from the MKWeakSet. Returns true if keys has been removed successfully.
 
@@ -889,8 +827,6 @@ ___
 ### has
 
 ▸ **has**(`keys`: readonly K[]): boolean
-
-*Defined in [mkweakset.ts:79](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakset.ts#L79)*
 
 Returns true if an element with the specified keys exists in the MKWeakSet object.
 

@@ -1,26 +1,27 @@
 {
     "compilerOptions": {
-        "target": "ES2015",
-        "module": "commonjs",
         "declaration": true,
-        "stripInternal": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "commonjs",
         "outDir": "./lib",
         "strict": true,
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true
+        "stripInternal": true,
+        "target": "ES2015"
     },
     "include": ["src"],
     "typedocOptions": {
-        "mode": "file",
-        "out": "docs",
-        "name": "API",
+        "disableSources": true,
         "exclude": ["src/utils.ts"],
+        "excludeExternals": true,
         "excludeNotExported": true,
         "excludePrivate": true,
-        "excludeExternals": true,
-        "plugin": "typedoc-plugin-markdown",
-        "readme": "none",
+        "hideBreadcrumbs": true,
         "hideProjectName": true,
-        "hideBreadcrumbs": true
+        "mode": "file",
+        "name": "API",
+        "out": "docs",
+        "plugin": "typedoc-plugin-markdown",
+        "readme": "none"
   }
 }
