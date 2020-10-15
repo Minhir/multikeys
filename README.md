@@ -86,463 +86,827 @@ function memoize(func) {
 
 Also, we could replace `MKMap` with `MKWeakMap` and get `memoize` with auto garbage collection. In such case only objects could be `func` arguments.
 
+<a name="readmemd"></a>
+
 # API
-## Classes
 
-<dl>
-<dt><a href="#MKMap">MKMap</a></dt>
-<dd></dd>
-<dt><a href="#MKSet">MKSet</a></dt>
-<dd></dd>
-<dt><a href="#MKWeakMap">MKWeakMap</a></dt>
-<dd></dd>
-<dt><a href="#MKWeakSet">MKWeakSet</a></dt>
-<dd></dd>
-</dl>
+## Index
 
-<a name="MKMap"></a>
+### Classes
 
-## MKMap
-**Kind**: global class  
+* [MKMap](#classesmkmapmd)
+* [MKSet](#classesmksetmd)
+* [MKWeakMap](#classesmkweakmapmd)
+* [MKWeakSet](#classesmkweaksetmd)
 
-* [MKMap](#MKMap)
-    * [new MKMap(iterable)](#new_MKMap_new)
-    * [.size](#MKMap+size) ⇒
-    * [.clear()](#MKMap+clear)
-    * [.set(keys, value)](#MKMap+set) ⇒
-    * [.get(keys)](#MKMap+get) ⇒
-    * [.has(keys)](#MKMap+has) ⇒
-    * [.delete(keys)](#MKMap+delete) ⇒
-    * [.entries()](#MKMap+entries) ⇒
-    * [.keys()](#MKMap+keys) ⇒
-    * [.values()](#MKMap+values) ⇒
-    * [.forEach(callbackfn)](#MKMap+forEach)
 
-<a name="new_MKMap_new"></a>
+<a name="classesmkmapmd"></a>
 
-### new MKMap(iterable)
-<p>Creates a new MKMap object.</p>
-<p>Could be called with initial keys-values.</p>
-<pre class="prettyprint source"><code>const empty = new MKMap();
+# Class: MKMap\<K, V>
+
+## Type parameters
+
+Name | Default |
+------ | ------ |
+`K` | any |
+`V` | any |
+
+## Hierarchy
+
+* **MKMap**
+
+## Index
+
+### Constructors
+
+* [constructor](#constructor)
+
+### Accessors
+
+* [size](#size)
+
+### Methods
+
+* [[Symbol.iterator]](mkmap.md#[symbol.iterator])
+* [clear](#clear)
+* [delete](#delete)
+* [entries](#entries)
+* [forEach](#foreach)
+* [get](#get)
+* [has](#has)
+* [keys](#keys)
+* [set](#set)
+* [values](#values)
+
+## Constructors
+
+### constructor
+
+\+ **new MKMap**(`iterable?`: Iterable\<readonly [readonly K[], V]>): [MKMap](#classesmkmapmd)
+
+*Defined in [mkmap.ts:14](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L14)*
+
+Creates a new MKMap object.
+
+Could be called with initial keys-values.
+
+```
+const empty = new MKMap();
 const withValues = new MKMap([
     [['key_1', 'key_2'], 'value'],
     [['key'], 'val']
 ]);
-</code></pre>
+```
 
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| iterable | <p>Optional array of initial keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`iterable?` | Iterable\<readonly [readonly K[], V]> | Optional array of initial keys  |
 
-<a name="MKMap+size"></a>
+**Returns:** [MKMap](#classesmkmapmd)
 
-### mkMap.size ⇒
-**Kind**: instance property of [<code>MKMap</code>](#MKMap)  
-**Returns**: <p>Size of the MKMap object</p>  
-<a name="MKMap+clear"></a>
+## Accessors
 
-### mkMap.clear()
-<p>Removes all keys-value pairs from the MKMap object.</p>
+### size
 
-**Kind**: instance method of [<code>MKMap</code>](#MKMap)  
-<a name="MKMap+set"></a>
+• get **size**(): number
 
-### mkMap.set(keys, value) ⇒
-<p>Sets the value for the keys in the MKMap object. Returns the MKMap object.</p>
-<pre class="prettyprint source"><code>mkMap.set(['foo'], 'bar');
-</code></pre>
+*Defined in [mkmap.ts:44](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L44)*
 
-**Kind**: instance method of [<code>MKMap</code>](#MKMap)  
-**Returns**: <p>MKMap</p>  
+**Returns:** number
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
-| value | <p>Value associated with keys</p> |
+Size of the MKMap object
 
-<a name="MKMap+get"></a>
+## Methods
 
-### mkMap.get(keys) ⇒
-<p>Returns the value associated to the keys, or undefined if there is none.</p>
-<pre class="prettyprint source"><code>const mkMap = new MKMap([['foo'], 'bar']);
+### [Symbol.iterator]
 
-mkMap.get(['foo']); // => 'bar'
-</code></pre>
+▸ **[Symbol.iterator]**(): IterableIterator\<[K[], V]>
 
-**Kind**: instance method of [<code>MKMap</code>](#MKMap)  
-**Returns**: <p>Value or undefined</p>  
+*Defined in [mkmap.ts:243](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L243)*
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
+Returns a new Iterator object that contains an array of [keys, value] for each element in the MKMap object.
 
-<a name="MKMap+has"></a>
+**Returns:** IterableIterator\<[K[], V]>
 
-### mkMap.has(keys) ⇒
-<p>Returns a boolean asserting whether a value has been associated to the keys in the MKMap object or not.</p>
-<pre class="prettyprint source"><code>const mkMap = new MKMap([['foo'], 'bar']);
+Iterator of [keys, value]
 
-mkMap.has(['foo']); // => true
-</code></pre>
+___
 
-**Kind**: instance method of [<code>MKMap</code>](#MKMap)  
-**Returns**: <p>True if MKMap contains keys</p>  
+### clear
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
+▸ **clear**(): void
 
-<a name="MKMap+delete"></a>
+*Defined in [mkmap.ts:51](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L51)*
 
-### mkMap.delete(keys) ⇒
-<p>Returns true if an element in the MKMap object existed and has been removed, or false if the element does not exist.</p>
-<pre class="prettyprint source"><code>const mkMap = new MKMap([['foo'], 'bar']);
+Removes all keys-value pairs from the MKMap object.
+
+**Returns:** void
+
+___
+
+### delete
+
+▸ **delete**(`keys`: readonly K[]): boolean
+
+*Defined in [mkmap.ts:137](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L137)*
+
+Returns true if an element in the MKMap object existed and has been removed, or false if the element does not exist.
+
+```
+const mkMap = new MKMap([['foo'], 'bar']);
 
 mkMap.delete(['foo']); // => true
 mkMap.delete(['foo']); // => false
-</code></pre>
+```
 
-**Kind**: instance method of [<code>MKMap</code>](#MKMap)  
-**Returns**: <p>True if an element was in the MKMap</p>  
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys |
 
-<a name="MKMap+entries"></a>
+**Returns:** boolean
 
-### mkMap.entries() ⇒
-<p>Returns a new Iterator object that contains an array of [keys, value] for each element in the Map object.</p>
+True if an element was in the MKMap
 
-**Kind**: instance method of [<code>MKMap</code>](#MKMap)  
-**Returns**: <p>Iterator of [keys, value]</p>  
-<a name="MKMap+keys"></a>
+___
 
-### mkMap.keys() ⇒
-<p>Returns a new Iterator object that contains the keys for each element in the MKMap.</p>
+### entries
 
-**Kind**: instance method of [<code>MKMap</code>](#MKMap)  
-**Returns**: <p>Iterator over keys</p>  
-<a name="MKMap+values"></a>
+▸ **entries**(): IterableIterator\<[K[], V]>
 
-### mkMap.values() ⇒
-<p>Returns a new Iterator object that contains the values for each element in the MKMap object.</p>
+*Defined in [mkmap.ts:176](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L176)*
 
-**Kind**: instance method of [<code>MKMap</code>](#MKMap)  
-**Returns**: <p>Iterator over values</p>  
-<a name="MKMap+forEach"></a>
+Returns a new Iterator object that contains an array of [keys, value] for each element in the Map object.
 
-### mkMap.forEach(callbackfn)
-<p>Calls callbackFn once for each keys-value pair present in the MKMap object.</p>
+**Returns:** IterableIterator\<[K[], V]>
 
-**Kind**: instance method of [<code>MKMap</code>](#MKMap)  
+Iterator of [keys, value]
 
-| Param | Description |
-| --- | --- |
-| callbackfn | <p>Callback function</p> |
+___
 
-<a name="MKSet"></a>
+### forEach
 
-## MKSet
-**Kind**: global class  
+▸ **forEach**(`callbackfn`: (value: V,keys: K[],map: this) => void): void
 
-* [MKSet](#MKSet)
-    * [new MKSet(iterable)](#new_MKSet_new)
-    * [.size](#MKSet+size) ⇒
-    * [.add(keys)](#MKSet+add)
-    * [.clear()](#MKSet+clear)
-    * [.delete(keys)](#MKSet+delete) ⇒
-    * [.has(keys)](#MKSet+has) ⇒
-    * [.entries()](#MKSet+entries) ⇒
-    * [.values()](#MKSet+values) ⇒
-    * [.keys()](#MKSet+keys) ⇒
-    * [.forEach(callbackfn)](#MKSet+forEach)
+*Defined in [mkmap.ts:232](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L232)*
 
-<a name="new_MKSet_new"></a>
+Calls callbackFn once for each keys-value pair present in the MKMap object.
 
-### new MKSet(iterable)
-<p>Creates a new MKSet object.</p>
-<p>Could be called with initial keys.</p>
-<pre class="prettyprint source"><code>const empty = new MKSet();
+#### Parameters:
+
+Name | Type | Description |
+------ | ------ | ------ |
+`callbackfn` | (value: V,keys: K[],map: this) => void | Callback function  |
+
+**Returns:** void
+
+___
+
+### get
+
+▸ **get**(`keys`: readonly K[]): V \| undefined
+
+*Defined in [mkmap.ts:100](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L100)*
+
+Returns the value associated to the keys, or undefined if there is none.
+
+```
+const mkMap = new MKMap([['foo'], 'bar']);
+
+mkMap.get(['foo']); // => 'bar'
+```
+
+#### Parameters:
+
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys |
+
+**Returns:** V \| undefined
+
+Value or undefined
+
+___
+
+### has
+
+▸ **has**(`keys`: readonly K[]): boolean
+
+*Defined in [mkmap.ts:118](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L118)*
+
+Returns a boolean asserting whether a value has been associated to the keys in the MKMap object or not.
+
+```
+const mkMap = new MKMap([['foo'], 'bar']);
+
+mkMap.has(['foo']); // => true
+```
+
+#### Parameters:
+
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys |
+
+**Returns:** boolean
+
+True if MKMap contains keys
+
+___
+
+### keys
+
+▸ **keys**(): IterableIterator\<K[]>
+
+*Defined in [mkmap.ts:185](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L185)*
+
+Returns a new Iterator object that contains the keys for each element in the MKMap.
+
+**Returns:** IterableIterator\<K[]>
+
+Iterator over keys
+
+___
+
+### set
+
+▸ **set**(`keys`: readonly K[], `value`: V): this
+
+*Defined in [mkmap.ts:67](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L67)*
+
+Sets the value for the keys in the MKMap object. Returns the MKMap object.
+
+```
+mkMap.set(['foo'], 'bar');
+```
+
+#### Parameters:
+
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys |
+`value` | V | Value associated with keys |
+
+**Returns:** this
+
+MKMap
+
+___
+
+### values
+
+▸ **values**(): IterableIterator\<V>
+
+*Defined in [mkmap.ts:202](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkmap.ts#L202)*
+
+Returns a new Iterator object that contains the values for each element in the MKMap object.
+
+**Returns:** IterableIterator\<V>
+
+Iterator over values
+
+
+<a name="classesmksetmd"></a>
+
+# Class: MKSet\<K>
+
+## Type parameters
+
+Name | Default |
+------ | ------ |
+`K` | any |
+
+## Hierarchy
+
+* **MKSet**
+
+## Index
+
+### Constructors
+
+* [constructor](#constructor)
+
+### Accessors
+
+* [size](#size)
+
+### Methods
+
+* [[Symbol.iterator]](mkset.md#[symbol.iterator])
+* [add](#add)
+* [clear](#clear)
+* [delete](#delete)
+* [entries](#entries)
+* [forEach](#foreach)
+* [has](#has)
+* [keys](#keys)
+* [values](#values)
+
+## Constructors
+
+### constructor
+
+\+ **new MKSet**(`iterable?`: Iterable\<readonly K[]>): [MKSet](#classesmksetmd)
+
+*Defined in [mkset.ts:6](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L6)*
+
+Creates a new MKSet object.
+
+Could be called with initial keys.
+
+```
+const empty = new MKSet();
 const withKeys = new MKSet([
     ['key'],
     ['few', 'keys']
 ]);
-</code></pre>
+```
 
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| iterable | <p>Optional array of initial keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`iterable?` | Iterable\<readonly K[]> | Optional array of initial keys  |
 
-<a name="MKSet+size"></a>
+**Returns:** [MKSet](#classesmksetmd)
 
-### mkSet.size ⇒
-<p>Returns the number of values in the MKSet object.</p>
+## Accessors
 
-**Kind**: instance property of [<code>MKSet</code>](#MKSet)  
-**Returns**: <p>Size of the MKMap object</p>  
-<a name="MKSet+add"></a>
+### size
 
-### mkSet.add(keys)
-<p>Appends keys to the MKSet object.</p>
-<pre class="prettyprint source"><code>mkSet.add([1, 2, 3]);
-</code></pre>
+• get **size**(): number
 
-**Kind**: instance method of [<code>MKSet</code>](#MKSet)  
+*Defined in [mkset.ts:38](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L38)*
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
+Returns the number of values in the MKSet object.
 
-<a name="MKSet+clear"></a>
+**Returns:** number
 
-### mkSet.clear()
-<p>Removes all elements from the MKSet object.</p>
+Size of the MKMap object
 
-**Kind**: instance method of [<code>MKSet</code>](#MKSet)  
-<a name="MKSet+delete"></a>
+## Methods
 
-### mkSet.delete(keys) ⇒
-<p>Removes the element associated to the keys and returns the value that MKSet.has(keys) would have previously returned. MKSet.has(keys) will return false afterwards.</p>
-<pre class="prettyprint source"><code>const mkSet = new MKSet([['foo']]);
+### [Symbol.iterator]
+
+▸ **[Symbol.iterator]**(): IterableIterator\<K[]>
+
+*Defined in [mkset.ts:101](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L101)*
+
+Returns a new Iterator object that yields the keys for each element in the MKSet object.
+
+**Returns:** IterableIterator\<K[]>
+
+Iterator over keys
+
+___
+
+### add
+
+▸ **add**(`keys`: readonly K[]): void
+
+*Defined in [mkset.ts:51](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L51)*
+
+Appends keys to the MKSet object.
+
+```
+mkSet.add([1, 2, 3]);
+```
+
+#### Parameters:
+
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys  |
+
+**Returns:** void
+
+___
+
+### clear
+
+▸ **clear**(): void
+
+*Defined in [mkset.ts:58](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L58)*
+
+Removes all elements from the MKSet object.
+
+**Returns:** void
+
+___
+
+### delete
+
+▸ **delete**(`keys`: readonly K[]): boolean
+
+*Defined in [mkset.ts:75](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L75)*
+
+Removes the element associated to the keys and returns the value that MKSet.has(keys) would have previously returned. MKSet.has(keys) will return false afterwards.
+
+```
+const mkSet = new MKSet([['foo']]);
 
 mkSet.delete(['foo']); // => true
 mkSet.delete(['foo']); // => false
-</code></pre>
+```
 
-**Kind**: instance method of [<code>MKSet</code>](#MKSet)  
-**Returns**: <p>True if an element was in the MKMap</p>  
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys |
 
-<a name="MKSet+has"></a>
+**Returns:** boolean
 
-### mkSet.has(keys) ⇒
-<p>Returns a boolean asserting whether an element is present with the given keys in the MKSet object or not.</p>
-<pre class="prettyprint source"><code>const mkSet = new MKSet([['foo']]);
+True if an element was in the MKMap
+
+___
+
+### entries
+
+▸ **entries**(): IterableIterator\<[K[], K[]]>
+
+*Defined in [mkset.ts:118](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L118)*
+
+Returns a new Iterator object that contains an array of [keys, keys] for each element in the MKSet object.
+
+**Returns:** IterableIterator\<[K[], K[]]>
+
+Iterator of [keys, keys]
+
+___
+
+### forEach
+
+▸ **forEach**(`callbackfn`: (value: K[],key: K[],map: this) => void): void
+
+*Defined in [mkset.ts:153](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L153)*
+
+Calls callbackFn once for each value present in the MKSet object.
+
+#### Parameters:
+
+Name | Type | Description |
+------ | ------ | ------ |
+`callbackfn` | (value: K[],key: K[],map: this) => void | Callback function  |
+
+**Returns:** void
+
+___
+
+### has
+
+▸ **has**(`keys`: readonly K[]): boolean
+
+*Defined in [mkset.ts:92](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L92)*
+
+Returns a boolean asserting whether an element is present with the given keys in the MKSet object or not.
+
+```
+const mkSet = new MKSet([['foo']]);
 
 mkSet.has(['foo']); // => true
 mkSet.has(['bar']); // => false
-</code></pre>
+```
 
-**Kind**: instance method of [<code>MKSet</code>](#MKSet)  
-**Returns**: <p>True if MKMap contains keys</p>  
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys |
 
-<a name="MKSet+entries"></a>
+**Returns:** boolean
 
-### mkSet.entries() ⇒
-<p>Returns a new Iterator object that contains an array of [keys, keys] for each element in the MKSet object.</p>
+True if MKMap contains keys
 
-**Kind**: instance method of [<code>MKSet</code>](#MKSet)  
-**Returns**: <p>Iterator of [keys, keys]</p>  
-<a name="MKSet+values"></a>
+___
 
-### mkSet.values() ⇒
-<p>Returns a new Iterator object that yields the keys for each element in the MKSet object. (this is the same as the keys() method.)</p>
+### keys
 
-**Kind**: instance method of [<code>MKSet</code>](#MKSet)  
-**Returns**: <p>Iterator over keys</p>  
-<a name="MKSet+keys"></a>
+▸ **keys**(): IterableIterator\<K[]>
 
-### mkSet.keys() ⇒
-<p>Returns a new Iterator object that yields the keys for each element in the MKSet object. (this is the same as the values() method.)</p>
+*Defined in [mkset.ts:144](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L144)*
 
-**Kind**: instance method of [<code>MKSet</code>](#MKSet)  
-**Returns**: <p>Iterator over keys</p>  
-<a name="MKSet+forEach"></a>
+Returns a new Iterator object that yields the keys for each element in the MKSet object. (this is the same as the values() method.)
 
-### mkSet.forEach(callbackfn)
-<p>Calls callbackFn once for each value present in the MKSet object.</p>
+**Returns:** IterableIterator\<K[]>
 
-**Kind**: instance method of [<code>MKSet</code>](#MKSet)  
+Iterator over keys
 
-| Param | Description |
-| --- | --- |
-| callbackfn | <p>Callback function</p> |
+___
 
-<a name="MKWeakMap"></a>
+### values
 
-## MKWeakMap
-**Kind**: global class  
+▸ **values**(): IterableIterator\<K[]>
 
-* [MKWeakMap](#MKWeakMap)
-    * [new MKWeakMap(iterable)](#new_MKWeakMap_new)
-    * [.delete(keys)](#MKWeakMap+delete) ⇒
-    * [.get(keys)](#MKWeakMap+get) ⇒
-    * [.has(keys)](#MKWeakMap+has) ⇒
-    * [.set(keys, value)](#MKWeakMap+set) ⇒
+*Defined in [mkset.ts:135](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkset.ts#L135)*
 
-<a name="new_MKWeakMap_new"></a>
+Returns a new Iterator object that yields the keys for each element in the MKSet object. (this is the same as the keys() method.)
 
-### new MKWeakMap(iterable)
-<p>Creates a new MKWeakMap object.</p>
-<p>Could be called with initial keys-values</p>
-<pre class="prettyprint source"><code>const empty = new MKWeakMap();
+**Returns:** IterableIterator\<K[]>
+
+Iterator over keys
+
+
+<a name="classesmkweakmapmd"></a>
+
+# Class: MKWeakMap\<K, V>
+
+## Type parameters
+
+Name | Type | Default |
+------ | ------ | ------ |
+`K` | object | object |
+`V` | - | any |
+
+## Hierarchy
+
+* **MKWeakMap**
+
+## Index
+
+### Constructors
+
+* [constructor](#constructor)
+
+### Methods
+
+* [delete](#delete)
+* [get](#get)
+* [has](#has)
+* [set](#set)
+
+## Constructors
+
+### constructor
+
+\+ **new MKWeakMap**(`iterable?`: Iterable\<readonly [readonly K[], V]>): [MKWeakMap](#classesmkweakmapmd)
+
+*Defined in [mkweakmap.ts:12](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakmap.ts#L12)*
+
+Creates a new MKWeakMap object.
+
+Could be called with initial keys-values
+
+```
+const empty = new MKWeakMap();
 const withValues = new MKWeakMap([
     [[{foo: 'bar'}], 'val']
 ]);
-</code></pre>
+```
 
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| iterable | <p>Optional array of initial keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`iterable?` | Iterable\<readonly [readonly K[], V]> | Optional array of initial keys  |
 
-<a name="MKWeakMap+delete"></a>
+**Returns:** [MKWeakMap](#classesmkweakmapmd)
 
-### mkWeakMap.delete(keys) ⇒
-<p>Removes any value associated to the keys. Returns true if an element in the MKWeakMap object has been removed successfully.</p>
-<pre class="prettyprint source"><code>const obj = {};
+## Methods
+
+### delete
+
+▸ **delete**(`keys`: readonly K[]): boolean
+
+*Defined in [mkweakmap.ts:52](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakmap.ts#L52)*
+
+Removes any value associated to the keys. Returns true if an element in the MKWeakMap object has been removed successfully.
+
+```
+const obj = {};
 const mkWeakMap = new MKWeakMap([[obj, 'foo']]);
 
 mkWeakMap.delete([obj]); // => true
 mkWeakMap.delete([obj]); // => false
-</code></pre>
+```
 
-**Kind**: instance method of [<code>MKWeakMap</code>](#MKWeakMap)  
-**Returns**: <p>True if an element was in the MKMap</p>  
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys |
 
-<a name="MKWeakMap+get"></a>
+**Returns:** boolean
 
-### mkWeakMap.get(keys) ⇒
-<p>Returns the value associated to the keys, or undefined if there is none.</p>
-<pre class="prettyprint source"><code>const obj = {};
+True if an element was in the MKMap
+
+___
+
+### get
+
+▸ **get**(`keys`: readonly K[]): V \| undefined
+
+*Defined in [mkweakmap.ts:92](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakmap.ts#L92)*
+
+Returns the value associated to the keys, or undefined if there is none.
+
+```
+const obj = {};
 const mkWeakMap = new MKWeakMap([[obj, 'foo']]);
 
 mkWeakMap.get([obj]); // => 'foo'
-</code></pre>
+```
 
-**Kind**: instance method of [<code>MKWeakMap</code>](#MKWeakMap)  
-**Returns**: <p>Value or undefined</p>  
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys |
 
-<a name="MKWeakMap+has"></a>
+**Returns:** V \| undefined
 
-### mkWeakMap.has(keys) ⇒
-<p>Returns a Boolean asserting whether a value has been associated to the keys in the MKWeakMap object or not.</p>
-<pre class="prettyprint source"><code>const obj = {};
+Value or undefined
+
+___
+
+### has
+
+▸ **has**(`keys`: readonly K[]): boolean
+
+*Defined in [mkweakmap.ts:111](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakmap.ts#L111)*
+
+Returns a Boolean asserting whether a value has been associated to the keys in the MKWeakMap object or not.
+
+```
+const obj = {};
 const mkWeakMap = new MKWeakMap([[obj, 'foo']]);
 
 mkWeakMap.has([obj]); // => 'true'
-</code></pre>
+```
 
-**Kind**: instance method of [<code>MKWeakMap</code>](#MKWeakMap)  
-**Returns**: <p>True if MKMap contains keys</p>  
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys |
 
-<a name="MKWeakMap+set"></a>
+**Returns:** boolean
 
-### mkWeakMap.set(keys, value) ⇒
-<p>Sets the value for the keys in the MKWeakMap object. Returns the MKWeakMap object.</p>
-<pre class="prettyprint source"><code>const mkWeakMap = new MKWeakMap();
+True if MKMap contains keys
+
+___
+
+### set
+
+▸ **set**(`keys`: readonly K[], `value`: V): this
+
+*Defined in [mkweakmap.ts:132](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakmap.ts#L132)*
+
+Sets the value for the keys in the MKWeakMap object. Returns the MKWeakMap object.
+
+```
+const mkWeakMap = new MKWeakMap();
 const obj = {};
 
 mkWeakMap.set([obj], 'foo');
 mkWeakMap.get([obj]); // => 'foo'
-</code></pre>
+```
 
-**Kind**: instance method of [<code>MKWeakMap</code>](#MKWeakMap)  
-**Returns**: <p>MKWeakMap</p>  
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
-| value | <p>Value associated with keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys |
+`value` | V | Value associated with keys |
 
-<a name="MKWeakSet"></a>
+**Returns:** this
 
-## MKWeakSet
-**Kind**: global class  
+MKWeakMap
 
-* [MKWeakSet](#MKWeakSet)
-    * [new MKWeakSet(iterable)](#new_MKWeakSet_new)
-    * [.add(keys)](#MKWeakSet+add)
-    * [.delete(keys)](#MKWeakSet+delete) ⇒
-    * [.has(keys)](#MKWeakSet+has) ⇒
 
-<a name="new_MKWeakSet_new"></a>
+<a name="classesmkweaksetmd"></a>
 
-### new MKWeakSet(iterable)
-<p>Creates a new MKWeakSet object.</p>
-<p>Could be called with initial keys</p>
-<pre class="prettyprint source"><code>const empty = new MKWeakSet();
+# Class: MKWeakSet\<K>
+
+## Type parameters
+
+Name | Type |
+------ | ------ |
+`K` | object |
+
+## Hierarchy
+
+* **MKWeakSet**
+
+## Index
+
+### Constructors
+
+* [constructor](#constructor)
+
+### Methods
+
+* [add](#add)
+* [delete](#delete)
+* [has](#has)
+
+## Constructors
+
+### constructor
+
+\+ **new MKWeakSet**(`iterable?`: Iterable\<readonly K[]>): [MKWeakSet](#classesmkweaksetmd)
+
+*Defined in [mkweakset.ts:5](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakset.ts#L5)*
+
+Creates a new MKWeakSet object.
+
+Could be called with initial keys
+
+```
+const empty = new MKWeakSet();
 const withValues = new MKWeakSet([
     [{foo: 'bar'}]
 ]);
-</code></pre>
+```
 
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| iterable | <p>Optional array of initial keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`iterable?` | Iterable\<readonly K[]> | Optional array of initial keys  |
 
-<a name="MKWeakSet+add"></a>
+**Returns:** [MKWeakSet](#classesmkweaksetmd)
 
-### mkWeakSet.add(keys)
-<p>Add keys to the MKWeakSet object.</p>
-<pre class="prettyprint source"><code>const mkWeakSet = new MKWeakSet();
+## Methods
+
+### add
+
+▸ **add**(`keys`: readonly K[]): void
+
+*Defined in [mkweakset.ts:44](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakset.ts#L44)*
+
+Add keys to the MKWeakSet object.
+
+```
+const mkWeakSet = new MKWeakSet();
 const obj = {};
 
 mkWeakSet.add([obj]);
 mkWeakSet.has([obj]); // => 'true'
-</code></pre>
+```
 
-**Kind**: instance method of [<code>MKWeakSet</code>](#MKWeakSet)  
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys  |
 
-<a name="MKWeakSet+delete"></a>
+**Returns:** void
 
-### mkWeakSet.delete(keys) ⇒
-<p>Removes keys from the MKWeakSet. Returns true if keys has been removed successfully.</p>
-<pre class="prettyprint source"><code>const obj = {};
+___
+
+### delete
+
+▸ **delete**(`keys`: readonly K[]): boolean
+
+*Defined in [mkweakset.ts:62](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakset.ts#L62)*
+
+Removes keys from the MKWeakSet. Returns true if keys has been removed successfully.
+
+```
+const obj = {};
 const mkWeakSet = new MKWeakSet([[obj]]);
 
 mkWeakSet.delete([obj]); // => true
 mkWeakSet.delete([obj]); // => false
-</code></pre>
+```
 
-**Kind**: instance method of [<code>MKWeakSet</code>](#MKWeakSet)  
-**Returns**: <p>True if an element was in the MKMap</p>  
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys |
 
-<a name="MKWeakSet+has"></a>
+**Returns:** boolean
 
-### mkWeakSet.has(keys) ⇒
-<p>Returns true if an element with the specified keys exists in the MKWeakSet object.</p>
-<pre class="prettyprint source"><code>const obj = {};
+True if an element was in the MKMap
+
+___
+
+### has
+
+▸ **has**(`keys`: readonly K[]): boolean
+
+*Defined in [mkweakset.ts:79](https://github.com/Minhir/multikeys/blob/bffabe4/src/mkweakset.ts#L79)*
+
+Returns true if an element with the specified keys exists in the MKWeakSet object.
+
+```
+const obj = {};
 const mkWeakSet = new MKWeakSet([[obj]]);
 
 mkWeakSet.has([obj]); // => 'true'
-</code></pre>
+```
 
-**Kind**: instance method of [<code>MKWeakSet</code>](#MKWeakSet)  
-**Returns**: <p>True if MKMap contains keys</p>  
+#### Parameters:
 
-| Param | Description |
-| --- | --- |
-| keys | <p>Array of keys</p> |
+Name | Type | Description |
+------ | ------ | ------ |
+`keys` | readonly K[] | Array of keys |
 
+**Returns:** boolean
+
+True if MKMap contains keys
