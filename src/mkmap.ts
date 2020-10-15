@@ -1,6 +1,7 @@
 import {getLastValueHandler, ValueHandler} from './utils';
 
 
+/** @internal */
 function createNewValueHandler<K, V>(): ValueHandler<K, V> {
     return {
         next: new Map()

@@ -18,8 +18,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "build:doc": "cat description.md > README.md && jsdoc2md --files ./src/*.ts --configure ./jsdoc2md.json >> README.md",
-    "build:doc:ci": "cat description.md > README_BASE.md && jsdoc2md --files ./src/*.ts --configure ./jsdoc2md.json >> README_BASE.md && cmp --silent README.md README_BASE.md || (echo 'Update README.md. Run \"npm run build:doc\" and add changes into PR.' && exit 1)",
+    "build:doc": "cat description.md > README.md && typedoc && npx concat-md --decrease-title-levels docs >> README.md",
+    "build:doc:ci": "cat description.md > README_BASE.md && typedoc && npx concat-md --decrease-title-levels docs >> README_BASE.md && cmp --silent README.md README_BASE.md || (echo 'Update README.md. Run \"npm run build:doc\" and add changes into PR.' && exit 1)",
     "lint": "eslint ./src",
     "test": "jest",
     "test:coverage": "npm run test -- --collect-coverage"
@@ -28,12 +28,13 @@
     "@types/jest": "^26.0.14",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
-    "better-docs": "^2.3.2",
+    "concat-md": "^0.3.5",
     "eslint": "^7.11.0",
     "eslint-plugin-jsdoc": "^30.6.5",
     "jest": "^26.4.1",
-    "jsdoc-to-markdown": "^6.0.1",
     "ts-jest": "^26.4.1",
+    "typedoc": "^0.19.2",
+    "typedoc-plugin-markdown": "^3.0.9",
     "typescript": "^3.9.6"
   },
   "jest": {
