@@ -18,8 +18,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "build:doc": "cat description.md > README.md && typedoc && npx concat-md --decrease-title-levels docs >> README.md",
-    "build:doc:ci": "cat description.md > README_BASE.md && typedoc && npx concat-md --decrease-title-levels docs >> README_BASE.md && cmp --silent README.md README_BASE.md || (echo 'Update README.md. Run \"npm run build:doc\" and add changes into PR.' && exit 1)",
+    "build:doc": "cat description.md > README.md && typedoc && npx concat-md --decrease-title-levels --start-title-level-at 2 docs >> README.md",
+    "build:doc:ci": "cat description.md > README_BASE.md && typedoc && npx concat-md --decrease-title-levels --start-title-level-at 2 docs >> README_BASE.md && cmp --silent README.md README_BASE.md || (echo 'Update README.md. Run \"npm run build:doc\" and add changes into PR.' && exit 1)",
     "lint": "eslint ./src",
     "test": "jest",
     "test:coverage": "npm run test -- --collect-coverage"
