@@ -3,5 +3,5 @@ export function areArraysEqual(arr1: any[], arr2: any[]): boolean {
         return false;
     }
 
-    return arr1.every((v, i) => v === arr2[i]);
+    return arr1.every((v, i) => Object.is(v, arr2[i]));
 }

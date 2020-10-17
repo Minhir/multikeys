@@ -24,7 +24,7 @@ function getRandomString() {
 }
 
 function getRandomVal() {
-    const n = getRandomInt(9);
+    const n = getRandomInt(10);
 
     switch (n) {
         case 0:
@@ -45,6 +45,8 @@ function getRandomVal() {
             return null;
         case 8:
             return undefined;
+        case 9:
+            return NaN;
         default:
             throw new Error('Bad type number');
     }
@@ -122,8 +124,9 @@ function runMapBenchmark() {
 
                 const val = map.get(keys);
 
-                if (val !== value) {
+                if (!Object.is(val, value)) {
                     console.error(`'multikey.map.set_and_get'. ${val} !== ${value}`);
+                    return;
                 }
             }
         });
