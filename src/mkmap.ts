@@ -25,8 +25,6 @@ class MKMap<K = any, V = any> {
      *     [['key'], 'val']
      * ]);
      * ```
-     *
-     * @param iterable - Optional array of initial keys
      */
     constructor(iterable?: Iterable<readonly [readonly K[], V]>) {
         if (!iterable) {
@@ -39,7 +37,7 @@ class MKMap<K = any, V = any> {
     }
 
     /**
-     * @returns Size of the MKMap object
+     * Returns the number of keys/value pairs in the MKMap object.
      */
     get size(): number {
         return this._size;
@@ -59,10 +57,6 @@ class MKMap<K = any, V = any> {
      * ```
      * mkMap.set(['foo'], 'bar');
      * ```
-     *
-     * @param keys - Array of keys
-     * @param value - Value associated with keys
-     * @returns MKMap
      */
     set(keys: readonly K[], value: V): this {
         if (!Array.isArray(keys)) {
@@ -93,9 +87,6 @@ class MKMap<K = any, V = any> {
      *
      * mkMap.get(['foo']); // => 'bar'
      * ```
-     *
-     * @param keys - Array of keys
-     * @returns Value or undefined
      */
     get(keys: readonly K[]): V | undefined {
         const handler = getLastValueHandler(this._root, keys);
@@ -111,9 +102,6 @@ class MKMap<K = any, V = any> {
      *
      * mkMap.has(['foo']); // => true
      * ```
-     *
-     * @param keys - Array of keys
-     * @returns True if MKMap contains keys
      */
     has(keys: readonly K[]): boolean {
         const handler = getLastValueHandler(this._root, keys);
@@ -130,9 +118,6 @@ class MKMap<K = any, V = any> {
      * mkMap.delete(['foo']); // => true
      * mkMap.delete(['foo']); // => false
      * ```
-     *
-     * @param keys - Array of keys
-     * @returns True if an element was in the MKMap
      */
     delete(keys: readonly K[]): boolean {
         const len = keys.length;
@@ -170,8 +155,6 @@ class MKMap<K = any, V = any> {
 
     /**
      * Returns a new Iterator object that contains an array of [keys, value] for each element in the Map object.
-     *
-     * @returns Iterator of [keys, value]
      */
     entries(): IterableIterator<[K[], V]> {
         return this[Symbol.iterator]();
@@ -179,8 +162,6 @@ class MKMap<K = any, V = any> {
 
     /**
      * Returns a new Iterator object that contains the keys for each element in the MKMap.
-     *
-     * @returns Iterator over keys
      */
     keys(): IterableIterator<K[]> {
         const self = this;
@@ -196,8 +177,6 @@ class MKMap<K = any, V = any> {
 
     /**
      * Returns a new Iterator object that contains the values for each element in the MKMap object.
-     *
-     * @returns Iterator over values
      */
     values(): IterableIterator<V> {
         const keys: K[] = [];
@@ -226,8 +205,6 @@ class MKMap<K = any, V = any> {
 
     /**
      * Calls callbackFn once for each keys-value pair present in the MKMap object.
-     *
-     * @param callbackfn - Callback function
      */
     forEach(callbackfn: (value: V, keys: K[], map: this) => void): void {
         for (const [keys, value] of this) {
@@ -237,8 +214,6 @@ class MKMap<K = any, V = any> {
 
     /**
      * Returns a new Iterator object that contains an array of [keys, value] for each element in the MKMap object.
-     *
-     * @returns Iterator of [keys, value]
      */
     [Symbol.iterator](): IterableIterator<[K[], V]> {
         const keys: K[] = [];

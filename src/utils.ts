@@ -10,7 +10,6 @@ export interface ValueHandler<K, V> {
 
 type Handler<K, V> = ValueHandler<K, V> | WeakValueHandler<any, V>;
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 export function getLastValueHandler<K, V>(handler: Handler<K, V>, keys: readonly K[], createHandler?: () => Handler<K, V>): Handler<K, V> | undefined {
     let curHandler = handler;
 

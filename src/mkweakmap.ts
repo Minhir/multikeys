@@ -22,8 +22,6 @@ class MKWeakMap<K extends object = object, V = any> {
      *     [[{foo: 'bar'}], 'val']
      * ]);
      * ```
-     *
-     * @param iterable - Optional array of initial keys
      */
     constructor(iterable?: Iterable<readonly [readonly K[], V]>) {
         if (!iterable) {
@@ -45,9 +43,6 @@ class MKWeakMap<K extends object = object, V = any> {
      * mkWeakMap.delete([obj]); // => true
      * mkWeakMap.delete([obj]); // => false
      * ```
-     *
-     * @param keys - Array of keys
-     * @returns True if an element was in the MKMap
      */
     delete(keys: readonly K[]): boolean {
         const len = keys.length;
@@ -85,9 +80,6 @@ class MKWeakMap<K extends object = object, V = any> {
      *
      * mkWeakMap.get([obj]); // => 'foo'
      * ```
-     *
-     * @param keys - Array of keys
-     * @returns Value or undefined
      */
     get(keys: readonly K[]): V | undefined {
         const handler = getLastValueHandler(this._root, keys);
@@ -104,9 +96,6 @@ class MKWeakMap<K extends object = object, V = any> {
      *
      * mkWeakMap.has([obj]); // => 'true'
      * ```
-     *
-     * @param keys - Array of keys
-     * @returns True if MKMap contains keys
      */
     has(keys: readonly K[]): boolean {
         const handler = getLastValueHandler(this._root, keys);
@@ -124,10 +113,6 @@ class MKWeakMap<K extends object = object, V = any> {
      * mkWeakMap.set([obj], 'foo');
      * mkWeakMap.get([obj]); // => 'foo'
      * ```
-     *
-     * @param keys - Array of keys
-     * @param value - Value associated with keys
-     * @returns MKWeakMap
      */
     set(keys: readonly K[], value: V): this {
         if (!Array.isArray(keys)) {
