@@ -90,59 +90,55 @@ Also, we could replace `MKMap` with `MKWeakMap` and get `memoize` with auto garb
 
 ## API
 
-### Index
+### Table of contents
 
 #### Classes
 
-* [MKMap](#classesmkmapmd)
-* [MKSet](#classesmksetmd)
-* [MKWeakMap](#classesmkweakmapmd)
-* [MKWeakSet](#classesmkweaksetmd)
+- [MKMap](#classesmkmapmd)
+- [MKSet](#classesmksetmd)
+- [MKWeakMap](#classesmkweakmapmd)
+- [MKWeakSet](#classesmkweaksetmd)
 
 
 <a name="classesmkmapmd"></a>
 
-## Class: MKMap\<K, V>
+## Class: MKMap<K, V\>
 
 ### Type parameters
 
 Name | Default |
------- | ------ |
-`K` | any |
-`V` | any |
+:------ | :------ |
+`K` | *any* |
+`V` | *any* |
 
-### Hierarchy
-
-* **MKMap**
-
-### Index
+### Table of contents
 
 #### Constructors
 
-* [constructor](#constructor)
+- [constructor](#constructor)
 
 #### Accessors
 
-* [size](#size)
+- [size](#size)
 
 #### Methods
 
-* [[Symbol.iterator]](mkmap.md#[symbol.iterator])
-* [clear](#clear)
-* [delete](#delete)
-* [entries](#entries)
-* [forEach](#foreach)
-* [get](#get)
-* [has](#has)
-* [keys](#keys)
-* [set](#set)
-* [values](#values)
+- [[Symbol.iterator]](mkmap.md#[symbol.iterator])
+- [clear](#clear)
+- [delete](#delete)
+- [entries](#entries)
+- [forEach](#foreach)
+- [get](#get)
+- [has](#has)
+- [keys](#keys)
+- [set](#set)
+- [values](#values)
 
 ### Constructors
 
 #### constructor
 
-\+ **new MKMap**(`iterable?`: Iterable\<readonly [readonly K[], V]>): [MKMap](#classesmkmapmd)
+\+ **new MKMap**<K, V\>(`iterable?`: *Iterable*<readonly readonly K[][]\>): [*MKMap*](#classesmkmapmd)<K, V\>
 
 Creates a new MKMap object.
 
@@ -156,49 +152,56 @@ const withValues = new MKMap([
 ]);
 ```
 
+##### Type parameters:
+
+Name | Default |
+:------ | :------ |
+`K` | *any* |
+`V` | *any* |
+
 ##### Parameters:
 
 Name | Type |
------- | ------ |
-`iterable?` | Iterable\<readonly [readonly K[], V]> |
+:------ | :------ |
+`iterable?` | *Iterable*<readonly readonly K[][]\> |
 
-**Returns:** [MKMap](#classesmkmapmd)
+**Returns:** [*MKMap*](#classesmkmapmd)<K, V\>
 
 ### Accessors
 
 #### size
 
-• get **size**(): number
+• get **size**(): *number*
 
 Returns the number of keys/value pairs in the MKMap object.
 
-**Returns:** number
+**Returns:** *number*
 
 ### Methods
 
 #### [Symbol.iterator]
 
-▸ **[Symbol.iterator]**(): IterableIterator\<[K[], V]>
+▸ **[Symbol.iterator]**(): *IterableIterator*<[K[], V]\>
 
 Returns a new Iterator object that contains an array of [keys, value] for each element in the MKMap object.
 
-**Returns:** IterableIterator\<[K[], V]>
+**Returns:** *IterableIterator*<[K[], V]\>
 
 ___
 
 #### clear
 
-▸ **clear**(): void
+▸ **clear**(): *void*
 
 Removes all keys-value pairs from the MKMap object.
 
-**Returns:** void
+**Returns:** *void*
 
 ___
 
 #### delete
 
-▸ **delete**(`keys`: readonly K[]): boolean
+▸ **delete**(`keys`: readonly K[]): *boolean*
 
 Returns true if an element in the MKMap object existed and has been removed, or false if the element does not exist.
 
@@ -212,42 +215,42 @@ mkMap.delete(['foo']); // => false
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 
-**Returns:** boolean
+**Returns:** *boolean*
 
 ___
 
 #### entries
 
-▸ **entries**(): IterableIterator\<[K[], V]>
+▸ **entries**(): *IterableIterator*<[K[], V]\>
 
 Returns a new Iterator object that contains an array of [keys, value] for each element in the Map object.
 
-**Returns:** IterableIterator\<[K[], V]>
+**Returns:** *IterableIterator*<[K[], V]\>
 
 ___
 
 #### forEach
 
-▸ **forEach**(`callbackfn`: (value: V, keys: K[], map: this) => void): void
+▸ **forEach**(`callbackFn`: (`value`: V, `keys`: K[], `map`: [*MKMap*](#classesmkmapmd)<K, V\>) => *void*): *void*
 
 Calls callbackFn once for each keys-value pair present in the MKMap object.
 
 ##### Parameters:
 
 Name | Type |
------- | ------ |
-`callbackfn` | (value: V, keys: K[], map: this) => void |
+:------ | :------ |
+`callbackFn` | (`value`: V, `keys`: K[], `map`: [*MKMap*](#classesmkmapmd)<K, V\>) => *void* |
 
-**Returns:** void
+**Returns:** *void*
 
 ___
 
 #### get
 
-▸ **get**(`keys`: readonly K[]): V \| undefined
+▸ **get**(`keys`: readonly K[]): *undefined* \| V
 
 Returns the value associated to the keys, or undefined if there is none.
 
@@ -260,16 +263,16 @@ mkMap.get(['foo']); // => 'bar'
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 
-**Returns:** V \| undefined
+**Returns:** *undefined* \| V
 
 ___
 
 #### has
 
-▸ **has**(`keys`: readonly K[]): boolean
+▸ **has**(`keys`: readonly K[]): *boolean*
 
 Returns a boolean asserting whether a value has been associated to the keys in the MKMap object or not.
 
@@ -282,26 +285,26 @@ mkMap.has(['foo']); // => true
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 
-**Returns:** boolean
+**Returns:** *boolean*
 
 ___
 
 #### keys
 
-▸ **keys**(): IterableIterator\<K[]>
+▸ **keys**(): *IterableIterator*<K[]\>
 
 Returns a new Iterator object that contains the keys for each element in the MKMap.
 
-**Returns:** IterableIterator\<K[]>
+**Returns:** *IterableIterator*<K[]\>
 
 ___
 
 #### set
 
-▸ **set**(`keys`: readonly K[], `value`: V): this
+▸ **set**(`keys`: readonly K[], `value`: V): [*MKMap*](#classesmkmapmd)<K, V\>
 
 Sets the value for the keys in the MKMap object. Returns the MKMap object.
 
@@ -312,64 +315,60 @@ mkMap.set(['foo'], 'bar');
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 `value` | V |
 
-**Returns:** this
+**Returns:** [*MKMap*](#classesmkmapmd)<K, V\>
 
 ___
 
 #### values
 
-▸ **values**(): IterableIterator\<V>
+▸ **values**(): *IterableIterator*<V\>
 
 Returns a new Iterator object that contains the values for each element in the MKMap object.
 
-**Returns:** IterableIterator\<V>
+**Returns:** *IterableIterator*<V\>
 
 
 <a name="classesmksetmd"></a>
 
-## Class: MKSet\<K>
+## Class: MKSet<K\>
 
 ### Type parameters
 
 Name | Default |
------- | ------ |
-`K` | any |
+:------ | :------ |
+`K` | *any* |
 
-### Hierarchy
-
-* **MKSet**
-
-### Index
+### Table of contents
 
 #### Constructors
 
-* [constructor](#constructor)
+- [constructor](#constructor)
 
 #### Accessors
 
-* [size](#size)
+- [size](#size)
 
 #### Methods
 
-* [[Symbol.iterator]](mkset.md#[symbol.iterator])
-* [add](#add)
-* [clear](#clear)
-* [delete](#delete)
-* [entries](#entries)
-* [forEach](#foreach)
-* [has](#has)
-* [keys](#keys)
-* [values](#values)
+- [[Symbol.iterator]](mkset.md#[symbol.iterator])
+- [add](#add)
+- [clear](#clear)
+- [delete](#delete)
+- [entries](#entries)
+- [forEach](#foreach)
+- [has](#has)
+- [keys](#keys)
+- [values](#values)
 
 ### Constructors
 
 #### constructor
 
-\+ **new MKSet**(`iterable?`: Iterable\<readonly K[]>): [MKSet](#classesmksetmd)
+\+ **new MKSet**<K\>(`iterable?`: *Iterable*<readonly K[]\>): [*MKSet*](#classesmksetmd)<K\>
 
 Creates a new MKSet object.
 
@@ -383,39 +382,45 @@ const withKeys = new MKSet([
 ]);
 ```
 
+##### Type parameters:
+
+Name | Default |
+:------ | :------ |
+`K` | *any* |
+
 ##### Parameters:
 
 Name | Type |
------- | ------ |
-`iterable?` | Iterable\<readonly K[]> |
+:------ | :------ |
+`iterable?` | *Iterable*<readonly K[]\> |
 
-**Returns:** [MKSet](#classesmksetmd)
+**Returns:** [*MKSet*](#classesmksetmd)<K\>
 
 ### Accessors
 
 #### size
 
-• get **size**(): number
+• get **size**(): *number*
 
 Returns the number of values in the MKSet object.
 
-**Returns:** number
+**Returns:** *number*
 
 ### Methods
 
 #### [Symbol.iterator]
 
-▸ **[Symbol.iterator]**(): IterableIterator\<K[]>
+▸ **[Symbol.iterator]**(): *IterableIterator*<K[]\>
 
 Returns a new Iterator object that yields the keys for each element in the MKSet object.
 
-**Returns:** IterableIterator\<K[]>
+**Returns:** *IterableIterator*<K[]\>
 
 ___
 
 #### add
 
-▸ **add**(`keys`: readonly K[]): void
+▸ **add**(`keys`: readonly K[]): *void*
 
 Appends keys to the MKSet object.
 
@@ -426,26 +431,26 @@ mkSet.add([1, 2, 3]);
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 
-**Returns:** void
+**Returns:** *void*
 
 ___
 
 #### clear
 
-▸ **clear**(): void
+▸ **clear**(): *void*
 
 Removes all elements from the MKSet object.
 
-**Returns:** void
+**Returns:** *void*
 
 ___
 
 #### delete
 
-▸ **delete**(`keys`: readonly K[]): boolean
+▸ **delete**(`keys`: readonly K[]): *boolean*
 
 Removes the element associated to the keys and returns the value that MKSet.has(keys) would have previously returned. MKSet.has(keys) will return false afterwards.
 
@@ -459,42 +464,42 @@ mkSet.delete(['foo']); // => false
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 
-**Returns:** boolean
+**Returns:** *boolean*
 
 ___
 
 #### entries
 
-▸ **entries**(): IterableIterator\<[K[], K[]]>
+▸ **entries**(): *IterableIterator*<[K[], K[]]\>
 
 Returns a new Iterator object that contains an array of [keys, keys] for each element in the MKSet object.
 
-**Returns:** IterableIterator\<[K[], K[]]>
+**Returns:** *IterableIterator*<[K[], K[]]\>
 
 ___
 
 #### forEach
 
-▸ **forEach**(`callbackfn`: (value: K[], key: K[], map: this) => void): void
+▸ **forEach**(`callbackFn`: (`value`: K[], `key`: K[], `map`: [*MKSet*](#classesmksetmd)<K\>) => *void*): *void*
 
 Calls callbackFn once for each value present in the MKSet object.
 
 ##### Parameters:
 
 Name | Type |
------- | ------ |
-`callbackfn` | (value: K[], key: K[], map: this) => void |
+:------ | :------ |
+`callbackFn` | (`value`: K[], `key`: K[], `map`: [*MKSet*](#classesmksetmd)<K\>) => *void* |
 
-**Returns:** void
+**Returns:** *void*
 
 ___
 
 #### has
 
-▸ **has**(`keys`: readonly K[]): boolean
+▸ **has**(`keys`: readonly K[]): *boolean*
 
 Returns a boolean asserting whether an element is present with the given keys in the MKSet object or not.
 
@@ -508,65 +513,61 @@ mkSet.has(['bar']); // => false
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 
-**Returns:** boolean
+**Returns:** *boolean*
 
 ___
 
 #### keys
 
-▸ **keys**(): IterableIterator\<K[]>
+▸ **keys**(): *IterableIterator*<K[]\>
 
 Returns a new Iterator object that yields the keys for each element in the MKSet object. (this is the same as the values() method.)
 
-**Returns:** IterableIterator\<K[]>
+**Returns:** *IterableIterator*<K[]\>
 
 ___
 
 #### values
 
-▸ **values**(): IterableIterator\<K[]>
+▸ **values**(): *IterableIterator*<K[]\>
 
 Returns a new Iterator object that yields the keys for each element in the MKSet object. (this is the same as the keys() method.)
 
-**Returns:** IterableIterator\<K[]>
+**Returns:** *IterableIterator*<K[]\>
 
 
 <a name="classesmkweakmapmd"></a>
 
-## Class: MKWeakMap\<K, V>
+## Class: MKWeakMap<K, V\>
 
 ### Type parameters
 
 Name | Type | Default |
------- | ------ | ------ |
-`K` | object | object |
-`V` | - | any |
+:------ | :------ | :------ |
+`K` | *object* | *object* |
+`V` | - | *any* |
 
-### Hierarchy
-
-* **MKWeakMap**
-
-### Index
+### Table of contents
 
 #### Constructors
 
-* [constructor](#constructor)
+- [constructor](#constructor)
 
 #### Methods
 
-* [delete](#delete)
-* [get](#get)
-* [has](#has)
-* [set](#set)
+- [delete](#delete)
+- [get](#get)
+- [has](#has)
+- [set](#set)
 
 ### Constructors
 
 #### constructor
 
-\+ **new MKWeakMap**(`iterable?`: Iterable\<readonly [readonly K[], V]>): [MKWeakMap](#classesmkweakmapmd)
+\+ **new MKWeakMap**<K, V\>(`iterable?`: *Iterable*<readonly readonly K[][]\>): [*MKWeakMap*](#classesmkweakmapmd)<K, V\>
 
 Creates a new MKWeakMap object.
 
@@ -579,19 +580,26 @@ const withValues = new MKWeakMap([
 ]);
 ```
 
+##### Type parameters:
+
+Name | Type | Default |
+:------ | :------ | :------ |
+`K` | *object* | *object* |
+`V` | - | *any* |
+
 ##### Parameters:
 
 Name | Type |
------- | ------ |
-`iterable?` | Iterable\<readonly [readonly K[], V]> |
+:------ | :------ |
+`iterable?` | *Iterable*<readonly readonly K[][]\> |
 
-**Returns:** [MKWeakMap](#classesmkweakmapmd)
+**Returns:** [*MKWeakMap*](#classesmkweakmapmd)<K, V\>
 
 ### Methods
 
 #### delete
 
-▸ **delete**(`keys`: readonly K[]): boolean
+▸ **delete**(`keys`: readonly K[]): *boolean*
 
 Removes any value associated to the keys. Returns true if an element in the MKWeakMap object has been removed successfully.
 
@@ -606,16 +614,16 @@ mkWeakMap.delete([obj]); // => false
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 
-**Returns:** boolean
+**Returns:** *boolean*
 
 ___
 
 #### get
 
-▸ **get**(`keys`: readonly K[]): V \| undefined
+▸ **get**(`keys`: readonly K[]): *undefined* \| V
 
 Returns the value associated to the keys, or undefined if there is none.
 
@@ -629,16 +637,16 @@ mkWeakMap.get([obj]); // => 'foo'
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 
-**Returns:** V \| undefined
+**Returns:** *undefined* \| V
 
 ___
 
 #### has
 
-▸ **has**(`keys`: readonly K[]): boolean
+▸ **has**(`keys`: readonly K[]): *boolean*
 
 Returns a Boolean asserting whether a value has been associated to the keys in the MKWeakMap object or not.
 
@@ -652,16 +660,16 @@ mkWeakMap.has([obj]); // => 'true'
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 
-**Returns:** boolean
+**Returns:** *boolean*
 
 ___
 
 #### set
 
-▸ **set**(`keys`: readonly K[], `value`: V): this
+▸ **set**(`keys`: readonly K[], `value`: V): [*MKWeakMap*](#classesmkweakmapmd)<K, V\>
 
 Sets the value for the keys in the MKWeakMap object. Returns the MKWeakMap object.
 
@@ -676,44 +684,40 @@ mkWeakMap.get([obj]); // => 'foo'
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 `value` | V |
 
-**Returns:** this
+**Returns:** [*MKWeakMap*](#classesmkweakmapmd)<K, V\>
 
 
 <a name="classesmkweaksetmd"></a>
 
-## Class: MKWeakSet\<K>
+## Class: MKWeakSet<K\>
 
 ### Type parameters
 
 Name | Type |
------- | ------ |
-`K` | object |
+:------ | :------ |
+`K` | *object* |
 
-### Hierarchy
-
-* **MKWeakSet**
-
-### Index
+### Table of contents
 
 #### Constructors
 
-* [constructor](#constructor)
+- [constructor](#constructor)
 
 #### Methods
 
-* [add](#add)
-* [delete](#delete)
-* [has](#has)
+- [add](#add)
+- [delete](#delete)
+- [has](#has)
 
 ### Constructors
 
 #### constructor
 
-\+ **new MKWeakSet**(`iterable?`: Iterable\<readonly K[]>): [MKWeakSet](#classesmkweaksetmd)
+\+ **new MKWeakSet**<K\>(`iterable?`: *Iterable*<readonly K[]\>): [*MKWeakSet*](#classesmkweaksetmd)<K\>
 
 Creates a new MKWeakSet object.
 
@@ -726,19 +730,25 @@ const withValues = new MKWeakSet([
 ]);
 ```
 
+##### Type parameters:
+
+Name | Type |
+:------ | :------ |
+`K` | *object* |
+
 ##### Parameters:
 
 Name | Type |
------- | ------ |
-`iterable?` | Iterable\<readonly K[]> |
+:------ | :------ |
+`iterable?` | *Iterable*<readonly K[]\> |
 
-**Returns:** [MKWeakSet](#classesmkweaksetmd)
+**Returns:** [*MKWeakSet*](#classesmkweaksetmd)<K\>
 
 ### Methods
 
 #### add
 
-▸ **add**(`keys`: readonly K[]): void
+▸ **add**(`keys`: readonly K[]): *void*
 
 Add keys to the MKWeakSet object.
 
@@ -753,16 +763,16 @@ mkWeakSet.has([obj]); // => 'true'
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 
-**Returns:** void
+**Returns:** *void*
 
 ___
 
 #### delete
 
-▸ **delete**(`keys`: readonly K[]): boolean
+▸ **delete**(`keys`: readonly K[]): *boolean*
 
 Removes keys from the MKWeakSet. Returns true if keys has been removed successfully.
 
@@ -777,16 +787,16 @@ mkWeakSet.delete([obj]); // => false
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 
-**Returns:** boolean
+**Returns:** *boolean*
 
 ___
 
 #### has
 
-▸ **has**(`keys`: readonly K[]): boolean
+▸ **has**(`keys`: readonly K[]): *boolean*
 
 Returns true if an element with the specified keys exists in the MKWeakSet object.
 
@@ -800,7 +810,7 @@ mkWeakSet.has([obj]); // => 'true'
 ##### Parameters:
 
 Name | Type |
------- | ------ |
+:------ | :------ |
 `keys` | readonly K[] |
 
-**Returns:** boolean
+**Returns:** *boolean*
