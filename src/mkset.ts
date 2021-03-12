@@ -128,9 +128,9 @@ class MKSet<K = any> {
     /**
      * Calls callbackFn once for each value present in the MKSet object.
      */
-    forEach(callbackfn: (value: K[], key: K[], map: this) => void): void {
+    forEach(callbackFn: (value: K[], key: K[], map: this) => void): void {
         for (const keys of this) {
-            callbackfn(keys, keys, this);
+            callbackFn(keys, keys, this);
         }
     }
 }

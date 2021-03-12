@@ -206,9 +206,9 @@ class MKMap<K = any, V = any> {
     /**
      * Calls callbackFn once for each keys-value pair present in the MKMap object.
      */
-    forEach(callbackfn: (value: V, keys: K[], map: this) => void): void {
+    forEach(callbackFn: (value: V, keys: K[], map: this) => void): void {
         for (const [keys, value] of this) {
-            callbackfn(value, keys, this);
+            callbackFn(value, keys, this);
         }
     }
 
