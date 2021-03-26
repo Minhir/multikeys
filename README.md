@@ -138,7 +138,7 @@ Name | Default |
 
 #### constructor
 
-\+ **new MKMap**<K, V\>(`iterable?`: *Iterable*<readonly readonly K[][]\>): [*MKMap*](#classesmkmapmd)<K, V\>
+\+ **new MKMap**<K, V\>(`iterable?`: *Iterable*<readonly [readonly K[], V]\>): [*MKMap*](#classesmkmapmd)<K, V\>
 
 Creates a new MKMap object.
 
@@ -163,7 +163,7 @@ Name | Default |
 
 Name | Type |
 :------ | :------ |
-`iterable?` | *Iterable*<readonly readonly K[][]\> |
+`iterable?` | *Iterable*<readonly [readonly K[], V]\> |
 
 **Returns:** [*MKMap*](#classesmkmapmd)<K, V\>
 
@@ -567,7 +567,7 @@ Name | Type | Default |
 
 #### constructor
 
-\+ **new MKWeakMap**<K, V\>(`iterable?`: *Iterable*<readonly readonly K[][]\>): [*MKWeakMap*](#classesmkweakmapmd)<K, V\>
+\+ **new MKWeakMap**<K, V\>(`iterable?`: *Iterable*<readonly [readonly K[], V]\>): [*MKWeakMap*](#classesmkweakmapmd)<K, V\>
 
 Creates a new MKWeakMap object.
 
@@ -591,7 +591,7 @@ Name | Type | Default |
 
 Name | Type |
 :------ | :------ |
-`iterable?` | *Iterable*<readonly readonly K[][]\> |
+`iterable?` | *Iterable*<readonly [readonly K[], V]\> |
 
 **Returns:** [*MKWeakMap*](#classesmkweakmapmd)<K, V\>
 
