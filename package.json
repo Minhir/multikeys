@@ -25,15 +25,15 @@
     "test:coverage": "npm run test -- --collect-coverage"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.22",
-    "@typescript-eslint/eslint-plugin": "^4.19.0",
-    "@typescript-eslint/parser": "^4.19.0",
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
     "concat-md": "^0.3.5",
-    "eslint": "^7.21.0",
-    "jest": "^26.6.3",
-    "ts-jest": "^26.5.4",
-    "typedoc": "^0.20.34",
-    "typedoc-plugin-markdown": "^3.6.0",
+    "eslint": "^7.32.0",
+    "jest": "^27.2.2",
+    "ts-jest": "^27.0.5",
+    "typedoc": "^0.22.4",
+    "typedoc-plugin-markdown": "^3.11.2",
     "typescript": "^4.2.3"
   },
   "jest": {
