@@ -123,7 +123,7 @@ Also, we could replace `MKMap` with `MKWeakMap` and get `memoize` with auto garb
 
 #### Methods
 
-- [[Symbol.iterator]](MKMap.md#[symbol.iterator])
+- [[iterator]](MKMap.md#[iterator])
 - [clear](#clear)
 - [delete](#delete)
 - [entries](#entries)
@@ -179,9 +179,9 @@ Returns the number of keys/value pairs in the MKMap object.
 
 ### Methods
 
-#### [Symbol.iterator]
+#### [iterator]
 
-▸ **[Symbol.iterator]**(): `IterableIterator`<[`K`[], `V`]\>
+▸ **[iterator]**(): `IterableIterator`<[`K`[], `V`]\>
 
 Returns a new Iterator object that contains an array of [keys, value] for each element in the MKMap object.
 
@@ -374,7 +374,7 @@ Returns a new Iterator object that contains the values for each element in the M
 
 #### Methods
 
-- [[Symbol.iterator]](MKSet.md#[symbol.iterator])
+- [[iterator]](MKSet.md#[iterator])
 - [add](#add)
 - [clear](#clear)
 - [delete](#delete)
@@ -428,9 +428,9 @@ Returns the number of values in the MKSet object.
 
 ### Methods
 
-#### [Symbol.iterator]
+#### [iterator]
 
-▸ **[Symbol.iterator]**(): `IterableIterator`<`K`[]\>
+▸ **[iterator]**(): `IterableIterator`<`K`[]\>
 
 Returns a new Iterator object that yields the keys for each element in the MKSet object.
 
@@ -585,7 +585,7 @@ Returns a new Iterator object that yields the keys for each element in the MKSet
 
 | Name | Type |
 | :------ | :------ |
-| `K` | extends `object``object` |
+| `K` | extends `object` = `object` |
 | `V` | `any` |
 
 ### Table of contents
@@ -622,7 +622,7 @@ const withValues = new MKWeakMap([
 
 | Name | Type |
 | :------ | :------ |
-| `K` | extends `object``object` |
+| `K` | extends `object` = `object` |
 | `V` | `any` |
 
 ##### Parameters
