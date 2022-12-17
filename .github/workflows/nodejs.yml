@@ -13,24 +13,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12'
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
 
-    - name: npm install, build, and test
-      run: |
-        npm ci
-        npm run lint
-        npm run build:doc:ci
-        npm run test:coverage
-        npm run build
-      env:
-        CI: true
+      - name: npm install, build, and test
+        run: |
+          npm ci
+          npm run lint
+          npm run build:doc:ci
+          npm run test:coverage
+          npm run build
+        env:
+          CI: true
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

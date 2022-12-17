@@ -10,29 +10,29 @@ Multikeys data structures collection written in TypeScript: Map, Set, WeakMap an
 <details>
     <summary>Benchmarks :rocket:</summary>
 
-Benchmarks are located in `./benchmark` directory.  You can modify `./benchmark/index.js` and run `npm i && npm start` to test your own use cases.
+Benchmarks are located in `./benchmark` directory. You can modify `./benchmark/index.js` and run `npm i && npm start` to test your own use cases.
 
-Results of calling `set` and `get` with random data (and random number of keys). You can find benchmark code in  `./benchmark/index.js`.
+Results of calling `set` and `get` with random data (and random number of keys). You can find benchmark code in `./benchmark/index.js`.
 
 ## Maximum number of keys is 10
 
 | package                                                      | set and get (ops/sec) | normalized on `many-keys-map` |
-|--------------------------------------------------------------|-----------------------|-------------------------------|
-| [multikeymap](https://www.npmjs.com/package/multikeymap)     |       1.37 ±19.20%    | 0                             |
-| [many-keys-map](https://www.npmjs.com/package/many-keys-map) |  27 795 ±0.84%        | 1                             |
-| [multikey](https://www.npmjs.com/package/multikey)           |  79 355 ±1.37%        | 2.85                          |
+| ------------------------------------------------------------ | --------------------- | ----------------------------- |
+| [multikeymap](https://www.npmjs.com/package/multikeymap)     | 1.37 ±19.20%          | 0                             |
+| [many-keys-map](https://www.npmjs.com/package/many-keys-map) | 27 795 ±0.84%         | 1                             |
+| [multikey](https://www.npmjs.com/package/multikey)           | 79 355 ±1.37%         | 2.85                          |
 | [multikey-map](https://www.npmjs.com/package/multikey-map)   | 153 616 ±1.32%        | 5.52                          |
 | **multikeys**                                                | 185 565 ±1.70%        | 6.67                          |
 
 ## Maximum number of keys is 100
 
 | package                                                      | set and get (ops/sec) | normalized on `many-keys-map` |
-|--------------------------------------------------------------|-----------------------|-------------------------------|
-| [multikeymap](https://www.npmjs.com/package/multikeymap)     | fall with OOM         | -                              |
-| [many-keys-map](https://www.npmjs.com/package/many-keys-map) |  7 120 ±0.92%         | 1                              |
-| [multikey](https://www.npmjs.com/package/multikey)           | 10 830 ±1.35%         | 1.52                           |
-| [multikey-map](https://www.npmjs.com/package/multikey-map)   | 29 635 ±1.26%         | 4.16                           |
-| **multikeys**                                                | 43 394 ±1.52%         | 6.09                           |
+| ------------------------------------------------------------ | --------------------- | ----------------------------- |
+| [multikeymap](https://www.npmjs.com/package/multikeymap)     | fall with OOM         | -                             |
+| [many-keys-map](https://www.npmjs.com/package/many-keys-map) | 7 120 ±0.92%          | 1                             |
+| [multikey](https://www.npmjs.com/package/multikey)           | 10 830 ±1.35%         | 1.52                          |
+| [multikey-map](https://www.npmjs.com/package/multikey-map)   | 29 635 ±1.26%         | 4.16                          |
+| **multikeys**                                                | 43 394 ±1.52%         | 6.09                          |
 
 </details>
 
@@ -41,15 +41,15 @@ Results of calling `set` and `get` with random data (and random number of keys).
 ```javascript
 const mkMap = new MKMap();
 
-mkMap.set([1, 2, 3], 'foo');
-mkMap.set([3, 2, 1], 'bar');
+mkMap.set([1, 2, 3], "foo");
+mkMap.set([3, 2, 1], "bar");
 
 // order of keys matters
 mkMap.get([1, 2, 3]); // => 'foo'
 mkMap.get([3, 2, 1]); // => 'bar'
 
 // an argument with empty keys is also valid
-mkMap.set([], 'zero');
+mkMap.set([], "zero");
 mkMap.get([]); // => 'zero'
 ```
 
@@ -65,22 +65,22 @@ mkSet.has([obj, 1]); // => true
 Using MKMap we could simply add memoization to function with a variable number of arguments:
 
 ```javascript
-const {MKMap} = require("multikeys");
+const { MKMap } = require("multikeys");
 
 function memoize(func) {
-    const mkMap = new MKMap();
+  const mkMap = new MKMap();
 
-    return (...args) => {
-        if (mkMap.has(args)) {
-            return mkMap.get(args);
-        }
+  return (...args) => {
+    if (mkMap.has(args)) {
+      return mkMap.get(args);
+    }
 
-        const res = func(...args);
+    const res = func(...args);
 
-        mkMap.set(args, res);
+    mkMap.set(args, res);
 
-        return res;
-    };
+    return res;
+  };
 }
 ```
 
