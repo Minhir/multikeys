@@ -1,5 +1,6 @@
-import { MKMap } from "../src";
+import { describe, expect, it } from "vitest";
 
+import { MKMap } from "../src";
 import { areArraysEqual } from "./utils";
 
 describe("MKMap", () => {
