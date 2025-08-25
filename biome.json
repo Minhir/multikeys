@@ -17,7 +17,7 @@
     }
   },
   "files": {
-    "includes": ["src/**/*.ts", "tests/**/*.ts"]
+    "includes": ["src/**/*.ts", "tests/**/*.ts", "*.json"]
   },
   "formatter": {
     "indentStyle": "space"

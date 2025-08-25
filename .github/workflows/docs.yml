@@ -1,0 +1,27 @@
+name: docs
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - run: npm ci
+      - run: npm run docs:build
+
+      - uses: actions/upload-pages-artifact@v4
+        with: { path: "./docs" }
+
+      - uses: actions/deploy-pages@v4
