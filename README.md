@@ -1,7 +1,7 @@
 # multikeys
 
 [![](https://img.shields.io/npm/v/multikeys)](https://www.npmjs.com/package/multikeys)
-![](https://img.shields.io/github/actions/workflow/status/minhir/multikeys/nodejs.yml?branch=master)
+![](https://img.shields.io/github/actions/workflow/status/minhir/multikeys/nodejs.yml?branch=main)
 [![](https://img.shields.io/coveralls/github/Minhir/multikeys)](https://coveralls.io/github/Minhir/multikeys)
 ![](https://img.shields.io/github/license/minhir/multikeys?color=blue)
 
