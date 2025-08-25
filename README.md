@@ -7,6 +7,8 @@
 
 Multikeys data structures collection written in TypeScript: Map, Set, WeakMap and WeakSet. Based on trie data structure.
 
+[API Reference](https://minhir.github.io/multikeys/index.html)
+
 <details>
     <summary>Benchmarks :rocket:</summary>
 

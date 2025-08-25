@@ -5,6 +5,6 @@
   "excludeExternals": true,
   "excludePrivate": true,
   "excludeProtected": true,
-  "name": "doc: multikeys",
+  "name": "Reference: multikeys",
   "plugin": ["typedoc-github-theme"]
 }
