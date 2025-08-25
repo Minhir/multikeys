@@ -1,3 +1,5 @@
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
 import { MKMap, MKSet } from "../src";
 
 describe("simple usage", () => {
@@ -39,7 +41,7 @@ describe("memoization", () => {
     };
   }
 
-  const func = jest.fn((...args) => args.reverse());
+  const func = vi.fn((...args) => args.reverse());
 
   beforeEach(() => {
     func.mockClear();
