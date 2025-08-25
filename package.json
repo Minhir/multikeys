@@ -20,16 +20,14 @@
     "build": "tsc",
     "build:doc": "cat description.md > README.md && typedoc && npx concat-md --decrease-title-levels --start-title-level-at 2 docs >> README.md",
     "build:doc:ci": "cat description.md > README_BASE.md && typedoc && npx concat-md --decrease-title-levels --start-title-level-at 2 docs >> README_BASE.md && cmp --silent README.md README_BASE.md || (echo 'Update README.md. Run \"npm run build:doc\" and add changes into PR.' && exit 1)",
-    "lint": "eslint ./src",
+    "lint": "biome check",
     "test": "jest",
     "test:coverage": "npm run test -- --collect-coverage"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.2.2",
     "@types/jest": "^29.2.4",
-    "@typescript-eslint/eslint-plugin": "^5.46.1",
-    "@typescript-eslint/parser": "^5.46.1",
     "concat-md": "^0.5.0",
-    "eslint": "^8.30.0",
     "jest": "^29.3.1",
     "ts-jest": "^29.0.3",
     "typedoc": "^0.23.22",

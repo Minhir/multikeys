@@ -1,0 +1,25 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noPrototypeBuiltins": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off"
+      },
+      "complexity": {
+        "useLiteralKeys": "off"
+      }
+    }
+  },
+  "files": {
+    "includes": ["src/**/*.ts", "tests/**/*.ts"]
+  },
+  "formatter": {
+    "indentStyle": "space"
+  }
+}

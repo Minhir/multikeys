@@ -1,83 +1,86 @@
-import {MKWeakSet} from '../src';
+import { MKWeakSet } from "../src";
 
+describe("MKWeakSet", () => {
+  const obj1 = {};
+  const obj2 = {};
+  const obj3 = {};
 
-describe('MKWeakSet', () => {
-    const obj1 = {};
-    const obj2 = {};
-    const obj3 = {};
+  const testData: object[][] = [
+    [new Map(), new Set()],
+    [{}, {}],
+    [[], []],
+    [[], {}, new Date()],
+    [() => {}, []],
+    [obj1],
+    [obj1, obj2],
+    [obj1, obj2, obj3],
+    [],
+  ];
 
-    const testData: object[][] = [
-        [new Map(), new Set()],
-        [{}, {}],
-        [[], []],
-        [[], {}, new Date()],
-        [() => {}, []],
-        [obj1],
-        [obj1, obj2],
-        [obj1, obj2, obj3],
-        []
-    ];
+  it("Can be initialized with data", () => {
+    const set = new MKWeakSet(testData);
 
-    it('Can be initialized with data', () => {
-        const set = new MKWeakSet(testData);
+    for (const keys of testData) {
+      expect(set.has(keys)).toEqual(true);
+    }
+  });
 
-        testData.forEach(keys => {
-            expect(set.has(keys)).toEqual(true);
-        });
-    });
+  it("works with all keys kinds", () => {
+    const set = new MKWeakSet();
 
-    it('works with all keys kinds', () => {
-        const set = new MKWeakSet();
+    for (const keys of testData) {
+      expect(set.has(keys)).toEqual(false);
 
-        testData.forEach(keys => {
-            expect(set.has(keys)).toEqual(false);
+      set.add(keys);
+    }
 
-            set.add(keys);
-        });
+    for (const keys of testData) {
+      expect(set.has(keys)).toEqual(true);
+      expect(set.delete(keys)).toEqual(true);
+      expect(set.has(keys)).toEqual(false);
+    }
+  });
 
-        testData.forEach(keys => {
-            expect(set.has(keys)).toEqual(true);
-            expect(set.delete(keys)).toEqual(true);
-            expect(set.has(keys)).toEqual(false);
-        });
-    });
+  it("returns true/false from delete", () => {
+    const set = new MKWeakSet();
 
+    set.add([obj1, obj2]);
 
-    it('returns true/false from delete', () => {
-        const set = new MKWeakSet();
+    expect(set.delete([obj1])).toEqual(false);
+    expect(set.delete([obj1, obj2, obj3])).toEqual(false);
+    expect(set.delete([obj1, obj2])).toEqual(true);
+  });
 
-        set.add([ obj1,  obj2]);
+  it("works with empty key", () => {
+    const set = new MKWeakSet();
 
-        expect(set.delete([obj1])).toEqual(false);
-        expect(set.delete([obj1, obj2, obj3])).toEqual(false);
-        expect(set.delete([obj1,  obj2])).toEqual(true);
+    set.add([]);
 
-    });
+    expect(set.has([])).toEqual(true);
 
-    it('works with empty key', () => {
-        const set = new MKWeakSet();
+    set.add([obj1, obj2]);
 
-        set.add([]);
+    expect(set.has([])).toEqual(true);
 
-        expect(set.has([])).toEqual(true);
+    expect(set.delete([])).toEqual(true);
+    expect(set.has([])).toEqual(false);
 
-        set.add([obj1, obj2]);
+    expect(set.has([obj1, obj2])).toEqual(true);
+  });
 
-        expect(set.has([])).toEqual(true);
+  it("throws error on bad key type", () => {
+    const set = new MKWeakSet();
 
-        expect(set.delete([])).toEqual(true);
-        expect(set.has([])).toEqual(false);
+    expect(() => new MKWeakSet([[1 as any]])).toThrow(
+      "Invalid value is used as weak key",
+    );
+    expect(() => set.add([1 as any])).toThrow(
+      "Invalid value is used as weak key",
+    );
 
-        expect(set.has([obj1, obj2])).toEqual(true);
-    });
-
-    it('throws error on bad key type', () => {
-        const set = new MKWeakSet();
-
-        expect(() => new MKWeakSet([[1 as any]])).toThrow('Invalid value is used as weak key');
-        expect(() => set.add([1 as any])).toThrow('Invalid value is used as weak key');
-
-        expect(() => set.add(1 as any)).toThrow('Keys should be an array');
-        expect(() => new MKWeakSet(['23' as any, [2]])).toThrow('Keys should be an array');
-    });
+    expect(() => set.add(1 as any)).toThrow("Keys should be an array");
+    expect(() => new MKWeakSet(["23" as any, [2]])).toThrow(
+      "Keys should be an array",
+    );
+  });
 });
