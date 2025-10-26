@@ -17,7 +17,7 @@
     }
   },
   "files": {
-    "includes": ["*.ts", "*.json"]
+    "includes": ["**/*.ts", "**/*.json", "!node_modules", "!dist", "!lib"]
   },
   "formatter": {
     "indentStyle": "space"

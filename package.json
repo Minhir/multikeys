@@ -17,6 +17,7 @@
     "/lib"
   ],
   "scripts": {
+    "bench": "vitest bench --run",
     "build": "tsc",
     "build:doc": "typedoc",
     "lint": "biome check",
@@ -25,11 +26,16 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.2",
-    "@vitest/coverage-v8": "^3.2.4",
+    "@faker-js/faker": "^10.0.0",
+    "@vitest/coverage-v8": "^4.0.3",
+    "many-keys-map": "^3.0.3",
+    "multikey": "^0.0.4",
+    "multikey-map": "^0.4.0",
+    "multikeymap": "^1.0.0",
     "typedoc": "^0.28.11",
     "typedoc-github-theme": "^0.3.1",
     "typescript": "^5.9.2",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.3"
   },
   "repository": {
     "type": "git",
