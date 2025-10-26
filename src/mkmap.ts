@@ -68,7 +68,6 @@ class MKMap<K = any, V = any> {
     );
 
     if (!handler) {
-      /* v8 ignore next 4 */
       throw new Error(
         "Multikeys: can't set keys. There is some internal problem.",
       ); // Should never be called
