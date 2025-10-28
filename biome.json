@@ -17,7 +17,7 @@
     }
   },
   "files": {
-    "includes": ["**/*.ts", "**/*.json", "!node_modules", "!dist", "!lib"]
+    "includes": ["**/*.ts", "**/*.json", "!node_modules", "!dist"]
   },
   "formatter": {
     "indentStyle": "space"
