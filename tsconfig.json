@@ -4,7 +4,6 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
-    "outDir": "./lib",
     "strict": true,
     "stripInternal": true,
     "target": "ES2015",
