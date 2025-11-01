@@ -13,7 +13,21 @@
 
 Check [API Reference](https://minhir.github.io/multikeys/index.html).
 
-## Example of usage
+## Installation
+
+With npm:
+
+```sh
+npm add multikeys
+```
+
+With pnpm:
+
+```sh
+pnpm add multikeys
+```
+
+## Usage examples
 
 ```javascript
 const mkMap = new MKMap();
