@@ -30,6 +30,8 @@ pnpm add multikeys
 ## Usage examples
 
 ```javascript
+import { MKMap } from "multikeys";
+
 const mkMap = new MKMap();
 
 mkMap.set([1, 2, 3], "foo");
@@ -56,7 +58,7 @@ mkSet.has([obj, 1]); // => true
 Using MKMap we could simply add memoization to function with a variable number of arguments:
 
 ```javascript
-const { MKMap } = require("multikeys");
+import { MKMap } from "multikeys";
 
 function memoize(func) {
   const mkMap = new MKMap();
