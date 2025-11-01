@@ -7,11 +7,11 @@
 
 **Multikeys** is a TypeScript collection of trie‑based Map, Set, WeakMap, and WeakSet designed for high performance.
 
-- ✨ TypeScript-first
+- ✨ 100% TypeScript
+- 🚀 Trie‑based implementation 2x-5x faster than other libs (check [benchmarks](./benchmark/README.md#results))
 - 🪶 Zero dependencies
-- 🚀 Optimized trie-based implementation (see [benchmarks](./benchmark/maps.bench.ts))
 
-Check [API Reference](https://minhir.github.io/multikeys/index.html).
+Check the full [API Reference](https://minhir.github.io/multikeys/index.html).
 
 ## Installation
 
