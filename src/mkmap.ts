@@ -54,7 +54,7 @@ class MKMap<K = any, V = any> {
       throw new Error("Keys should be an array");
     }
 
-    const node = this._root.getLastNodeOrCreateNew(keys);
+    const node = this._root.getNodeOrCreateNew(keys);
 
     if (!node.has) {
       this._size++;
@@ -75,7 +75,7 @@ class MKMap<K = any, V = any> {
    * ```
    */
   get(keys: readonly K[]): V | undefined {
-    const node = this._root.getLastNode(keys);
+    const node = this._root.getNode(keys);
 
     return node?.val;
   }
@@ -90,9 +90,9 @@ class MKMap<K = any, V = any> {
    * ```
    */
   has(keys: readonly K[]): boolean {
-    const lastNode = this._root.getLastNode(keys);
+    const node = this._root.getNode(keys);
 
-    return lastNode ? lastNode.has : false;
+    return node ? node.has : false;
   }
 
   /**

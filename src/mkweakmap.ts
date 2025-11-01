@@ -37,30 +37,14 @@ class MKWeakMap<K extends object = object, V = any> {
    * ```
    */
   delete(keys: readonly K[]): boolean {
-    const len = keys.length;
+    const node = this._root.getNode(keys);
 
-    const f = (node: Node<K, V, "weak">, ind: number): boolean => {
-      if (ind === len) {
-        if (!node.has) {
-          return false;
-        }
+    if (node?.has) {
+      node.removeValue();
+      return true;
+    }
 
-        node.removeValue();
-
-        return true;
-      }
-
-      const key = keys[ind];
-      const nextNode = node.next.get(key);
-
-      if (!nextNode) {
-        return false;
-      }
-
-      return f(nextNode, ind + 1);
-    };
-
-    return f(this._root, 0);
+    return false;
   }
 
   /**
@@ -74,9 +58,9 @@ class MKWeakMap<K extends object = object, V = any> {
    * ```
    */
   get(keys: readonly K[]): V | undefined {
-    const lastNode = this._root.getLastNode(keys);
+    const node = this._root.getNode(keys);
 
-    return lastNode?.has ? lastNode.val! : undefined;
+    return node?.has ? node.val! : undefined;
   }
 
   /**
@@ -90,7 +74,7 @@ class MKWeakMap<K extends object = object, V = any> {
    * ```
    */
   has(keys: readonly K[]): boolean {
-    const node = this._root.getLastNode(keys);
+    const node = this._root.getNode(keys);
 
     return node ? node.has : false;
   }
@@ -117,7 +101,7 @@ class MKWeakMap<K extends object = object, V = any> {
       }
     }
 
-    const node = this._root.getLastNodeOrCreateNew(keys);
+    const node = this._root.getNodeOrCreateNew(keys);
 
     node.has = true;
     node.val = value;

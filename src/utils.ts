@@ -30,7 +30,7 @@ export class Node<K, V, T extends "weak" | null = null> {
     return new Node<K, V, T>(this.createMap);
   }
 
-  getLastNode(keys: readonly K[]): Node<K, V, T> | undefined {
+  getNode(keys: readonly K[]): Node<K, V, T> | undefined {
     let curNode: Node<K, V, T> = this;
 
     for (const key of keys) {
@@ -46,7 +46,7 @@ export class Node<K, V, T extends "weak" | null = null> {
     return curNode;
   }
 
-  getLastNodeOrCreateNew(keys: readonly K[]): Node<K, V, T> {
+  getNodeOrCreateNew(keys: readonly K[]): Node<K, V, T> {
     let curNode: Node<K, V, T> = this;
 
     for (const key of keys) {
