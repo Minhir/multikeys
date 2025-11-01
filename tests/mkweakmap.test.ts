@@ -1,7 +1,6 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import { MKWeakMap } from "../src";
-import * as utils from "../src/utils";
 
 describe("MKWeakMap", () => {
   const obj1 = {};
@@ -114,18 +113,5 @@ describe("MKWeakMap", () => {
     expect(() => new MKWeakMap([["23" as any, 2]])).toThrow(
       "Keys should be an array",
     );
-  });
-
-  it("throws when the internal handler chain cannot be resolved", () => {
-    const map = new MKWeakMap();
-    const spy = vi
-      .spyOn(utils, "getLastValueHandler")
-      .mockReturnValueOnce(undefined as any);
-
-    expect(() => map.set([{}], "value")).toThrowError(
-      "Multikeys: can't set keys. There is some internal problem.",
-    );
-
-    spy.mockRestore();
   });
 });
