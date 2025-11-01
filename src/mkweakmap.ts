@@ -60,7 +60,7 @@ export class MKWeakMap<K extends object = object, V = any> {
   get(keys: readonly K[]): V | undefined {
     const node = this._root.getNode(keys);
 
-    return node?.has ? node.val! : undefined;
+    return node?.val;
   }
 
   /**
@@ -103,8 +103,7 @@ export class MKWeakMap<K extends object = object, V = any> {
 
     const node = this._root.getNodeOrCreateNew(keys);
 
-    node.has = true;
-    node.val = value;
+    node.set(value);
 
     return this;
   }
