@@ -1,15 +1,8 @@
-import { getLastValueHandler, type ValueHandler } from "./utils";
-
-/** @internal */
-function createNewValueHandler<K, V>(): ValueHandler<K, V> {
-  return {
-    next: new Map(),
-  };
-}
+import { Node } from "./utils";
 
 class MKMap<K = any, V = any> {
   private _size = 0;
-  private _root = createNewValueHandler<K, V>();
+  private _root = new Node<K, V>(() => new Map());
 
   /**
    * Creates a new MKMap object.
@@ -45,7 +38,7 @@ class MKMap<K = any, V = any> {
    * Removes all keys-value pairs from the MKMap object.
    */
   clear(): void {
-    this._root = createNewValueHandler();
+    this._root = this._root.new();
     this._size = 0;
   }
 
@@ -61,23 +54,13 @@ class MKMap<K = any, V = any> {
       throw new Error("Keys should be an array");
     }
 
-    const handler = getLastValueHandler(
-      this._root,
-      keys,
-      createNewValueHandler,
-    );
+    const node = this._root.getLastNodeOrCreateNew(keys);
 
-    if (!handler) {
-      throw new Error(
-        "Multikeys: can't set keys. There is some internal problem.",
-      ); // Should never be called
-    }
-
-    if (!handler.hasOwnProperty("val")) {
+    if (!node.has) {
       this._size++;
     }
 
-    handler.val = value;
+    node.set(value);
 
     return this;
   }
@@ -92,9 +75,9 @@ class MKMap<K = any, V = any> {
    * ```
    */
   get(keys: readonly K[]): V | undefined {
-    const handler = getLastValueHandler(this._root, keys);
+    const node = this._root.getLastNode(keys);
 
-    return handler?.val;
+    return node?.val;
   }
 
   /**
@@ -107,9 +90,9 @@ class MKMap<K = any, V = any> {
    * ```
    */
   has(keys: readonly K[]): boolean {
-    const handler = getLastValueHandler(this._root, keys);
+    const lastNode = this._root.getLastNode(keys);
 
-    return handler ? handler.hasOwnProperty("val") : false;
+    return lastNode ? lastNode.has : false;
   }
 
   /**
@@ -123,41 +106,43 @@ class MKMap<K = any, V = any> {
    * ```
    */
   delete(keys: readonly K[]): boolean {
-    const len = keys.length;
+    let currentNode = this._root;
+    let nodeForRemoval: Node<K, V> | null = null;
+    let prevNode: Node<K, V> | null = null;
+    let keyIdxToRemove = 0;
 
-    const f = (handler: ValueHandler<K, V>, ind: number): boolean => {
-      if (ind === len) {
-        if (!handler.hasOwnProperty("val")) {
-          return false;
-        }
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      const nextNode = currentNode.next.get(key);
 
-        this._size--;
-        delete handler["val"];
-
-        return true;
-      }
-
-      const key = keys[ind];
-      const nextHandler = handler.next.get(key);
-
-      if (!nextHandler) {
+      if (!nextNode) {
         return false;
       }
 
-      const res = f(nextHandler, ind + 1);
-
-      if (
-        res &&
-        nextHandler.next.size === 0 &&
-        !nextHandler.hasOwnProperty("val")
-      ) {
-        handler.next.delete(key);
+      if (currentNode.next.size > 1 || currentNode.has) {
+        nodeForRemoval = null;
+      } else if (!nodeForRemoval) {
+        nodeForRemoval = prevNode;
+        keyIdxToRemove = i - 1;
       }
 
-      return res;
-    };
+      prevNode = currentNode;
+      currentNode = nextNode;
+    }
 
-    return f(this._root, 0);
+    if (!currentNode.has) {
+      return false;
+    }
+
+    this._size--;
+
+    if (nodeForRemoval && currentNode.next.size === 0) {
+      nodeForRemoval.next.delete(keys[keyIdxToRemove]);
+    } else {
+      currentNode.removeValue();
+    }
+
+    return true;
   }
 
   /**
@@ -188,15 +173,15 @@ class MKMap<K = any, V = any> {
   values(): IterableIterator<V> {
     const keys: K[] = [];
 
-    function* dfs(handler: ValueHandler<K, V>): Generator<V> {
-      if (keys.length === 0 && handler.hasOwnProperty("val")) {
-        yield handler.val!;
+    function* dfs(node: Node<K, V>): Generator<V> {
+      if (keys.length === 0 && node.has) {
+        yield node.val!;
       }
 
-      for (const [k, v] of handler.next) {
+      for (const [k, v] of node.next) {
         keys.push(k);
 
-        if (v.hasOwnProperty("val")) {
+        if (v.has) {
           yield v.val!;
         }
 
@@ -223,15 +208,15 @@ class MKMap<K = any, V = any> {
   [Symbol.iterator](): IterableIterator<[K[], V]> {
     const keys: K[] = [];
 
-    function* dfs(handler: ValueHandler<K, V>): Generator<[K[], V]> {
-      if (keys.length === 0 && handler.hasOwnProperty("val")) {
-        yield [[], handler.val!];
+    function* dfs(node: Node<K, V>): Generator<[K[], V]> {
+      if (keys.length === 0 && node.has) {
+        yield [[], node.val!];
       }
 
-      for (const [k, v] of handler.next) {
+      for (const [k, v] of node.next) {
         keys.push(k);
 
-        if (v.hasOwnProperty("val")) {
+        if (v.has) {
           yield [[...keys], v.val!];
         }
 

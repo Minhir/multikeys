@@ -1,39 +1,68 @@
-export interface WeakValueHandler<K extends object, V> {
-  val?: V;
-  next: WeakMap<K, this>;
-}
+type Mp<K, V, T extends "weak" | null = null> = T extends "weak"
+  ? // @ts-expect-error
+    WeakMap<K, V>
+  : Map<K, V>;
 
-export interface ValueHandler<K, V> {
-  val?: V;
-  next: Map<K, this>;
-}
+export class Node<K, V, T extends "weak" | null = null> {
+  has: boolean;
+  val: V | undefined;
+  next: Mp<K, Node<K, V, T>, T>;
+  private createMap: () => Mp<K, Node<K, V, T>, T>;
 
-type Handler<K, V> = ValueHandler<K, V> | WeakValueHandler<any, V>;
-
-export function getLastValueHandler<K, V>(
-  handler: Handler<K, V>,
-  keys: readonly K[],
-  createHandler?: () => Handler<K, V>,
-): Handler<K, V> | undefined {
-  let curHandler = handler;
-
-  for (const key of keys) {
-    const nextHandler = curHandler.next.get(key);
-
-    if (nextHandler) {
-      curHandler = nextHandler;
-      continue;
-    }
-
-    if (!createHandler) {
-      return;
-    }
-
-    const newHandler = createHandler();
-
-    curHandler.next.set(key, newHandler as any);
-    curHandler = newHandler;
+  constructor(createMap: () => Mp<K, Node<K, V, T>, T>) {
+    this.has = false;
+    this.val = undefined;
+    this.createMap = createMap;
+    this.next = createMap();
   }
 
-  return curHandler;
+  set(value: V): void {
+    this.has = true;
+    this.val = value;
+  }
+
+  removeValue(): void {
+    this.has = false;
+    this.val = undefined;
+  }
+
+  new(): Node<K, V, T> {
+    return new Node<K, V, T>(this.createMap);
+  }
+
+  getLastNode(keys: readonly K[]): Node<K, V, T> | undefined {
+    let curNode: Node<K, V, T> = this;
+
+    for (const key of keys) {
+      const nextNode = curNode.next.get(key);
+
+      if (!nextNode) {
+        return;
+      }
+
+      curNode = nextNode;
+    }
+
+    return curNode;
+  }
+
+  getLastNodeOrCreateNew(keys: readonly K[]): Node<K, V, T> {
+    let curNode: Node<K, V, T> = this;
+
+    for (const key of keys) {
+      const nextNode = curNode.next.get(key);
+
+      if (nextNode) {
+        curNode = nextNode;
+        continue;
+      }
+
+      const newNode = this.new();
+
+      curNode.next.set(key, newNode);
+      curNode = newNode;
+    }
+
+    return curNode;
+  }
 }

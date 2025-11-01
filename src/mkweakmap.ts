@@ -1,13 +1,7 @@
-import { getLastValueHandler, type WeakValueHandler } from "./utils";
-
-function createNewValueHandler<K extends object, V>(): WeakValueHandler<K, V> {
-  return {
-    next: new WeakMap(),
-  };
-}
+import { Node } from "./utils";
 
 class MKWeakMap<K extends object = object, V = any> {
-  private _root = createNewValueHandler<K, V>();
+  private _root = new Node<K, V, "weak">(() => new WeakMap());
 
   /**
    * Creates a new MKWeakMap object.
@@ -45,25 +39,25 @@ class MKWeakMap<K extends object = object, V = any> {
   delete(keys: readonly K[]): boolean {
     const len = keys.length;
 
-    const f = (handler: WeakValueHandler<K, V>, ind: number): boolean => {
+    const f = (node: Node<K, V, "weak">, ind: number): boolean => {
       if (ind === len) {
-        if (!handler.hasOwnProperty("val")) {
+        if (!node.has) {
           return false;
         }
 
-        delete handler["val"];
+        node.removeValue();
 
         return true;
       }
 
       const key = keys[ind];
-      const nextHandler = handler.next.get(key);
+      const nextNode = node.next.get(key);
 
-      if (!nextHandler) {
+      if (!nextNode) {
         return false;
       }
 
-      return f(nextHandler, ind + 1);
+      return f(nextNode, ind + 1);
     };
 
     return f(this._root, 0);
@@ -80,9 +74,9 @@ class MKWeakMap<K extends object = object, V = any> {
    * ```
    */
   get(keys: readonly K[]): V | undefined {
-    const handler = getLastValueHandler(this._root, keys);
+    const lastNode = this._root.getLastNode(keys);
 
-    return handler?.val;
+    return lastNode?.has ? lastNode.val! : undefined;
   }
 
   /**
@@ -96,9 +90,9 @@ class MKWeakMap<K extends object = object, V = any> {
    * ```
    */
   has(keys: readonly K[]): boolean {
-    const handler = getLastValueHandler(this._root, keys);
+    const node = this._root.getLastNode(keys);
 
-    return handler ? handler.hasOwnProperty("val") : false;
+    return node ? node.has : false;
   }
 
   /**
@@ -123,19 +117,10 @@ class MKWeakMap<K extends object = object, V = any> {
       }
     }
 
-    const handler = getLastValueHandler(
-      this._root,
-      keys,
-      createNewValueHandler,
-    );
+    const node = this._root.getLastNodeOrCreateNew(keys);
 
-    if (!handler) {
-      throw new Error(
-        "Multikeys: can't set keys. There is some internal problem.",
-      ); // Should never be called
-    }
-
-    handler.val = value;
+    node.has = true;
+    node.val = value;
 
     return this;
   }
