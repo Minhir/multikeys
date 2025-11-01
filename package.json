@@ -32,18 +32,18 @@
     "test:coverage": "vitest --run --coverage"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.2",
-    "@faker-js/faker": "^10.0.0",
-    "@vitest/coverage-v8": "^4.0.3",
+    "@biomejs/biome": "^2.3.2",
+    "@faker-js/faker": "^10.1.0",
+    "@vitest/coverage-v8": "^4.0.6",
     "many-keys-map": "^3.0.3",
     "multikey": "^0.0.4",
     "multikey-map": "^0.4.0",
     "multikeymap": "^1.0.0",
-    "tsdown": "^0.15.10",
-    "typedoc": "^0.28.11",
+    "tsdown": "^0.15.12",
+    "typedoc": "^0.28.14",
     "typedoc-github-theme": "^0.3.1",
-    "typescript": "^5.9.2",
-    "vitest": "^4.0.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.6"
   },
   "repository": {
     "type": "git",
