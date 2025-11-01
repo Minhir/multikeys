@@ -1,4 +1,4 @@
-type Mp<K, V, T extends "weak" | null = null> = T extends "weak"
+type NodeMap<K, V, T extends "weak" | null = null> = T extends "weak"
   ? // @ts-expect-error
     WeakMap<K, V>
   : Map<K, V>;
@@ -6,10 +6,10 @@ type Mp<K, V, T extends "weak" | null = null> = T extends "weak"
 export class Node<K, V, T extends "weak" | null = null> {
   has: boolean;
   val: V | undefined;
-  next: Mp<K, Node<K, V, T>, T>;
-  private createMap: () => Mp<K, Node<K, V, T>, T>;
+  next: NodeMap<K, Node<K, V, T>, T>;
+  private createMap: () => NodeMap<K, Node<K, V, T>, T>;
 
-  constructor(createMap: () => Mp<K, Node<K, V, T>, T>) {
+  constructor(createMap: () => NodeMap<K, Node<K, V, T>, T>) {
     this.has = false;
     this.val = undefined;
     this.createMap = createMap;
