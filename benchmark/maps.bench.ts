@@ -6,14 +6,14 @@ import { bench, describe } from "vitest";
 
 import { MKMap } from "../src/index";
 
-faker.seed(12345);
-
 const generators = [
   () => faker.lorem.word(),
   () => faker.number.int({ min: -1000, max: 1000 }),
   () => faker.number.float({ min: -1000, max: 1000 }),
   () => faker.datatype.boolean(),
   () => faker.helpers.arrayElement([null, undefined, NaN, Symbol(), Infinity]),
+  () => ({ foo: faker.lorem.word(), bar: faker.number.int() }),
+  () => [faker.lorem.word(), faker.number.int()],
 ];
 
 function getRandomValue() {
@@ -60,9 +60,9 @@ const libraries = [
 ];
 
 const datasets = [
-  { name: "small", size: 50, maxLength: 3 },
-  { name: "medium", size: 500, maxLength: 5 },
-  { name: "large", size: 1_000, maxLength: 12 },
+  { name: "small", size: 100, maxLength: 3 },
+  { name: "medium", size: 1_000, maxLength: 5 },
+  { name: "large", size: 10_000, maxLength: 12 },
 ];
 
 type Operation = {
@@ -84,7 +84,7 @@ const operations: Operation[] = [
     },
   },
   {
-    name: "write + read",
+    name: "read",
     run: ({ map, testData, shuffledData }) => {
       for (const [keys, value] of testData) {
         map.set(keys, value);
@@ -94,39 +94,7 @@ const operations: Operation[] = [
         map.get(keys);
       }
 
-      for (const [keys] of [...testData].reverse()) {
-        map.get(keys);
-      }
-    },
-  },
-  {
-    name: "write + update",
-    run: ({ map, testData, shuffledData }) => {
-      for (const [keys, value] of testData) {
-        map.set(keys, value);
-      }
-
-      for (const [keys] of shuffledData) {
-        map.set(keys, getRandomValue());
-      }
-
-      for (const [keys] of [...shuffledData].reverse()) {
-        map.set(keys, getRandomValue());
-      }
-    },
-  },
-  {
-    name: "has",
-    run: ({ map, testData, shuffledData }) => {
-      for (const [keys, value] of testData) {
-        map.set(keys, value);
-      }
-
-      for (const [keys] of shuffledData) {
-        map.has(keys);
-      }
-
-      for (const [keys] of [...shuffledData].reverse()) {
+      for (const [keys] of testData) {
         map.has(keys);
       }
     },
@@ -146,17 +114,22 @@ const operations: Operation[] = [
 ];
 
 describe.for(datasets)("Dataset: $name ($size items)", (dataset) => {
-  const testData = generateData(dataset);
+  faker.seed(123);
 
+  const testData = generateData(dataset);
   const shuffledData = faker.helpers.shuffle(testData);
 
   describe.for(operations)("Operation: $name", (operation) => {
     for (const lib of libraries) {
-      bench(lib.name, () => {
-        const map = lib.createMap();
+      bench(
+        lib.name,
+        () => {
+          const map = lib.createMap();
 
-        operation.run({ map, testData, shuffledData });
-      });
+          operation.run({ map, testData, shuffledData });
+        },
+        { throws: true },
+      );
     }
   });
 });
