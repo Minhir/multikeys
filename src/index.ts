@@ -1,4 +1,4 @@
-export { default as MKMap } from "./mkmap";
-export { default as MKSet } from "./mkset";
-export { default as MKWeakMap } from "./mkweakmap";
-export { default as MKWeakSet } from "./mkweakset";
+export { MKMap } from "./mkmap";
+export { MKSet } from "./mkset";
+export { MKWeakMap } from "./mkweakmap";
+export { MKWeakSet } from "./mkweakset";

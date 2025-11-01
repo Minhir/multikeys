@@ -1,6 +1,6 @@
 import { Node } from "./utils";
 
-class MKWeakMap<K extends object = object, V = any> {
+export class MKWeakMap<K extends object = object, V = any> {
   private _root = new Node<K, V, "weak">(() => new WeakMap());
 
   /**
@@ -109,5 +109,3 @@ class MKWeakMap<K extends object = object, V = any> {
     return this;
   }
 }
-
-export default MKWeakMap;

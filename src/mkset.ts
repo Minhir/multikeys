@@ -1,6 +1,6 @@
-import MKMap from "./mkmap";
+import { MKMap } from "./mkmap";
 
-class MKSet<K = any> {
+export class MKSet<K = any> {
   private _map = new MKMap<K, boolean>();
 
   /**
@@ -134,5 +134,3 @@ class MKSet<K = any> {
     }
   }
 }
-
-export default MKSet;
