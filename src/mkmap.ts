@@ -1,6 +1,6 @@
 import { Node } from "./utils";
 
-class MKMap<K = any, V = any> {
+export class MKMap<K = any, V = any> {
   private _size = 0;
   private _root = new Node<K, V>(() => new Map());
 
@@ -228,5 +228,3 @@ class MKMap<K = any, V = any> {
     return dfs(this._root);
   }
 }
-
-export default MKMap;

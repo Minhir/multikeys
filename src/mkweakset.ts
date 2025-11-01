@@ -1,6 +1,6 @@
-import MKWeakMap from "./mkweakmap";
+import { MKWeakMap } from "./mkweakmap";
 
-class MKWeakSet<K extends object> {
+export class MKWeakSet<K extends object> {
   private _map = new MKWeakMap<K, boolean>();
 
   /**
@@ -71,5 +71,3 @@ class MKWeakSet<K extends object> {
     return this._map.has(keys);
   }
 }
-
-export default MKWeakSet;
