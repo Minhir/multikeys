@@ -85,4 +85,10 @@ describe("MKWeakSet", () => {
       "Keys should be an array",
     );
   });
+
+  it("returns itself from add", () => {
+    const set = new MKWeakSet();
+
+    expect(set.add([{}])).toBe(set);
+  });
 });
