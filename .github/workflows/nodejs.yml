@@ -24,6 +24,7 @@ jobs:
         run: |
           npm ci
           npm run lint
+          npm run tsc
           npm run test:coverage
           npm run build
         env:

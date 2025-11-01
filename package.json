@@ -28,6 +28,7 @@
     "build:doc": "typedoc",
     "lint": "biome check",
     "test": "vitest --run",
+    "tsc": "tsc --noEmit",
     "test:coverage": "vitest --run --coverage"
   },
   "devDependencies": {
