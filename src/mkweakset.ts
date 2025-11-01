@@ -36,8 +36,10 @@ class MKWeakSet<K extends object> {
    * mkWeakSet.has([obj]); // => 'true'
    * ```
    */
-  add(keys: readonly K[]): void {
+  add(keys: readonly K[]): this {
     this._map.set(keys, true);
+
+    return this;
   }
 
   /**

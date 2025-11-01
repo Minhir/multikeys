@@ -40,8 +40,10 @@ class MKSet<K = any> {
    * mkSet.add([1, 2, 3]);
    * ```
    */
-  add(keys: readonly K[]): void {
+  add(keys: readonly K[]): this {
     this._map.set(keys, true);
+
+    return this;
   }
 
   /**

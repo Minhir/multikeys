@@ -159,4 +159,10 @@ describe("MKSet", () => {
       "Keys should be an array",
     );
   });
+
+  it("returns itself from add", () => {
+    const set = new MKSet();
+
+    expect(set.add([1, 2])).toBe(set);
+  });
 });
